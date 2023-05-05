@@ -13,7 +13,7 @@ comments: na
 
 Neon EVM is a fully compatible Ethereum environment solution built on the Solana blockchain. The platform allows developers to deploy Ethereum dApps without undertaking any reconfiguration. 
 
-> No code changes required: Ethereum developers can build without Rust.
+> Minimal reconfiguration required: Ethereum developers can build without Rust.
 
 Neon EVM enables Solidity- and Vyper-based dApps to tap into Solana’s network benefits: low fees, high transaction speeds, and parallel transaction execution capabilities.
 
@@ -37,7 +37,7 @@ With Neon EVM, developers retain:
 * Familiar languages: Solidity, Vyper
 * Well-known Ethereum tools: MetaMask, Hardhat, Truffle, Remix, etc.
 * Ethereum RPC API compatibility
-* Ethereum Accounts, Signatures, Token standards (ERC-20, ERC-721)
+* Ethereum Accounts, Signatures, Token standards (ERC-20 and ERC-721)
 
 
 ## The best from Solana
