@@ -3,11 +3,21 @@ title: Why Neon EVM?
 proofedDate: 20230426
 iterationBy: HB
 includedInSite: true
-approvedBy: na
+approvedBy: YYY
 comments: na
 ---
 
+import infographic from '@site/static/img/doc-images/about/infographic.png';
+
 *Neon EVM is a low-friction solution to scale Ethereum dApps on Solana.*
+
+
+<div className='neon-img-box-300' style={{textAlign: 'center', width: 600, display: 'block', margin: 'auto'}}>
+
+<img src={infographic} />
+
+
+</div>
 
 ## Neon EVM
 
@@ -19,7 +29,7 @@ Neon EVM enables Solidity- and Vyper-based dApps to tap into Solana’s network 
 
 From a developer’s perspective, this means creating Solana-compatible contracts using tools you’re familiar with from the Ethereum Ecosystem. 
 
-Neon EVM makes the key Ethereum dApp tools compatible with Solana, including Vyper, Solidity, [MetaMask](/docs/wallet/metamask_setup), [Hardhat](/docs/developing/deploy_facilities/using_hardhat), [Truffle](/docs/developing/deploy_facilities/using_truffle), and [Remix](/docs/developing/deploy_facilities/using_remix). The solution allows any Ethereum application to run on Solana without any changes to its codebase, this includes Uniswap, SushiSwap, 0x, and MakerDAO. 
+Neon EVM makes the key Ethereum dApp tools compatible with Solana, including Vyper, Solidity, [MetaMask](/docs/wallet/metamask_setup), [Hardhat](/docs/developing/deploy_facilities/using_hardhat), [Truffle](/docs/developing/deploy_facilities/using_truffle), and [Remix](/docs/developing/deploy_facilities/using_remix). The solution allows any Ethereum application to run on Solana with minimal reconfiguration required, this includes Uniswap, SushiSwap, 0x, and MakerDAO. 
 
 
 ### Who uses Neon EVM?

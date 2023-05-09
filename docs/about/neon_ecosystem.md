@@ -3,17 +3,23 @@ title: Neon Ecosystem
 proofedDate: 20230427
 iterationBy: HB
 includedInSite: true
-approvedBy: na
-comment: #2 TODO Tracer API needs internal linking to replace Medium article #3 TODO mainnet launch update text and link for NeonPass (currently devnet) NeonAnalytics has been removed >> also remove from tooling section?
+approvedBy: YYY
+comment: #2 TODO Tracer API needs internal linking to replace Medium article 
 ---
 
-<div className='neon-img-box-300' style={{textAlign: 'center', width: 700, display: 'block', margin: 'auto'}}>
+import ecosystem from '@site/static/img/doc-images/about/neon-ecosystem-resized.png';
 
-![](img/neon_ecosystem.png)
+
+<div className='neon-img-box-300' style={{textAlign: 'center', width: 800, display: 'block', margin: 'auto'}}>
+
+<img src={ecosystem} />
+
+
 
 </div>
 
-**Neon EVM** is *the* solution that makes Solana's throughput, swift block speeds, and low gas prices available to Ethereum contracts. Neon EVM interacts directly with Solana nodes to carry out txs on Solana. The service is made up of three main components:
+
+**Neon EVM** is *the* solution that makes Solana's throughput, swift block speeds, and low gas prices available to Ethereum contracts. Neon EVM interacts directly with Solana nodes to carry out transactions on Solana. The service is made up of three main components:
 
 - Neon EVM
 - Neon Proxy
@@ -30,9 +36,7 @@ The **Neon EVM program** is a smart contract on the Solana blockchain. The Neon 
 
 ## Neon Proxy
 
-Neon Proxy is the "translator', an essential tool for packaging a Neon transaction into a Solana transaction. The proxy provides a containerized solution that's intuitive for [Operators](/docs/operating/overview/introduction). It's the Neon Proxy that allows Ethereum dApps to be ported to Neon with minimal reconfiguration.
-
-<!-- Yuri -- does this hit the mark "minimal reconfiguration" ? -->
+It's the Neon Proxy that allows Ethereum dApps to be ported to Neon with minimal reconfiguration. Neon Proxy packages a Neon transaction into a Solana transaction. The proxy is provided as a containerized solution that's intuitive for [Operators](/docs/operating/overview/introduction). 
 
 > **Neon Operators** run Neon Proxy servers to facilitate the seamless execution of Ethereum-like transactions on Solana. It is this proxy service that allows Ethereum dApps to be ported to Neon with minimal reconfiguration. Operators accept payment in NEON and make payments within the Solana Ecosystem in SOL.
 
@@ -51,7 +55,7 @@ Owners of the Neon token may engage in the Neon DAO activities.
 
 ## Neon DAO
 
-The DAO essentially owns the Neon EVM and is also a grant-issuing authority able to direct future research and development. The Neon DAO exists as a series of contracts deployed on Solana to provide a Layer 0 (L0: a social/governance layer) to control the functionality of Neon EVM. The DAO provides a web interface to allow the community, i.e. NEON holders, to raise and vote on proposals that impact the functioning of the Neon EVM.
+The DAO provides custodial services to Neon Foundation, assisting the foundation to direct future research and development. The Neon DAO exists as a series of contracts deployed on Solana to provide a governance layer to control the functionality of Neon EVM. DAO participants utilize a web interface to allow the community, i.e. NEON holders, to raise and vote on proposals that impact the functioning of the Neon EVM.
 
 ## Neon Tools
 
@@ -62,7 +66,7 @@ The DAO essentially owns the Neon EVM and is also a grant-issuing authority able
 
 ### NeonPass
 
-[NeonPass](https://devnet.neonpass.live/), currently available for DevNet, transfers ERC-20 tokens between Solana and Neon EVM. The [ERC-20 SPL wrapper](/docs/developing/deploy_facilities/interacting_with_spl_tokens) makes such transfers possible via (non-custodial) wallets.
+[NeonPass](https://devnet.neonpass.live/) transfers ERC-20 tokens between Solana and Neon EVM. The [ERC-20 SPL wrapper](/docs/developing/deploy_facilities/interacting_with_spl_tokens) makes such transfers possible via (non-custodial) wallets.
 
 > See the [NeonPass guide](/docs/token_transferring/neonpass_usage).
 
@@ -95,7 +99,7 @@ Neon EVM integrates with the popular WalletConnect protocol that provides a dece
 
 ### Tracing API
 
-More sophisticated than NeonScan, Neon's Tracing API is an extension for Neon Proxy. It assists developers to test, debug, and understand the behavior of their smart contracts on Neon EVM. The API provides a full externality trace on any Neon transactions executed on the Solana blockchain. 
+Neon's Tracing API is an extension for Neon Proxy. It assists developers to test, debug, and understand the behavior of their smart contracts on Neon EVM. The API provides a full externality trace on any Neon transactions executed on the Solana blockchain. 
 
 The Tracing API supports a rerun of historical transactions, runs transactions on historical states, and analyzes the state of the Solana blockchain after the execution of each instruction. 
 

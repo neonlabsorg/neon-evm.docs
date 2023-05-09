@@ -7,9 +7,11 @@ approvedBy: na
 comments: #1 TODO see inline comment 2.3
 ---
 
+import architecture from '@site/static/img/doc-images/about/how-it-works.png';
+
 <div className='neon-img-box-300' style={{textAlign: 'center', width: 900, display: 'block', margin: 'auto'}}>
 
-![](img/how_it_works.png)
+<img src={architecture} />
 
 </div>
 
