@@ -1,5 +1,5 @@
 ---
-title: Ethereum & Solana Capabilities in Synergy
+title: Ethereum & Solana in Synergy
 ---
 
 *This section describes a unique solution that allows Ethereum users to use the key features of Solana and vice versa.*
