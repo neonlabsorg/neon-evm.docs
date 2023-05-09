@@ -7,13 +7,12 @@ approvedBy: YYY
 comment: #2 TODO Tracer API needs internal linking to replace Medium article 
 ---
 
-import ecosystem from '@site/static/img/doc-images/about/neon-ecosystem-resized.png';
+import ecosystem from '@site/static/img/doc-images/about/neon-ecosystem.png';
 
 
 <div className='neon-img-box-300' style={{textAlign: 'center', width: 800, display: 'block', margin: 'auto'}}>
 
 <img src={ecosystem} />
-
 
 
 </div>
