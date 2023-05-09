@@ -3,7 +3,7 @@ title: How It Works
 proofedDate: 20230427
 iterationBy: HB
 includedInSite: true
-approvedBy: na
+approvedBy: YYY
 comments: #1 TODO see inline comment 2.3
 ---
 
