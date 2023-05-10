@@ -56,6 +56,11 @@ const sidebars = {
       label: 'Connect to Neon RPC',
       id: 'developing/connect_rpc'
     },
+        {
+      type: 'doc',
+      label: 'Request Test Tokens',
+      id: 'developing/utilities/faucet'
+    },
     {
       type: 'category',
       label: 'Configure Dev Tools',
@@ -69,7 +74,6 @@ const sidebars = {
       type: 'category',
       label: 'Use Tokens',
       items: [
-        'developing/utilities/faucet',      
         'developing/deploy_facilities/interacting_with_spl_tokens',
         'tokens/token_list',
         'developing/integrate/neon_transfer_sdk'
@@ -79,10 +83,10 @@ const sidebars = {
       type: 'category',
       label: 'Integrate',
       items: [
-        'developing/integrate/protocols/integrating_walletconnect',
+        'developing/integrate/wallets/integrating_metamask_into_your_dapp',
+        'developing/integrate/wallets/integrating_walletconnect',
         'developing/integrate/oracles/integrating_chainlink',
-        'developing/integrate/oracles/integrating_pyth',
-        'developing/integrate/wallets/integrating_metamask_into_your_dapp'
+        'developing/integrate/oracles/integrating_pyth'
       ]
     },
     {
