@@ -116,6 +116,7 @@ With the required Docker images built, you can now run `docker-compose` with `su
 sudo SOLANA_URL="https://api.devnet.solana.com" REVISION="v0.14.5" docker-compose -f docker-compose-operator-ro.yaml up -d
 ```
 where
+
 * `SOLANA_URL` is your RPC endpoint of choice.
 
 <!-- retired to retire linked page
