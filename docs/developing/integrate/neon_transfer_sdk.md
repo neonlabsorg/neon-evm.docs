@@ -16,14 +16,14 @@ This page provides you with the information required to pass tokens between Sola
 
 ## Introduction
 
-The following npm package provides a token pass tool. This same package provides the functionality to the NeonPass UI tool. It is built to be compliant with the React hooks architecture, but you are welcome to use clean core functions.
+The following npm package provides a token pass tool: the same package provides the functionality to [NeonPass UI](https://devnet.neonpass.live). It's built to be compliant with the React hooks architecture, but you are welcome to use clean core functions.
 
-You need to provide the addresses for a Solana-compatible wallet such as the Phantom wallet and an EVM-compatible wallet such as the MetaMask wallet. Both of these addresses are passed as required properties. The codule checks whether both wallet objects - window.solana and window.ehtereum - really exist. If they don't, the module will throw an error for you. 
+You need to provide the addresses for a Solana-compatible wallet such as a Phantom wallet and an EVM-compatible wallet such as a MetaMask wallet. Both of these addresses are passed as required properties. The module checks whether both wallet objects: window.solana and window.ethereum, exist. If they don't, it throws an error. 
 
+<!-- Is this relevant to end user?
+  For clean working configuration example we have to rebuild connect status buttons, their transfer callbacks and error handling. -->
 
-For clean working configuration example we have to rebuild connect status buttons, their transfer callbacks and error handling.
-
-## Step 1: installation and setup
+## Step 1: install and setup
 
 Firstly, install the package:
 
@@ -42,7 +42,7 @@ The following table provides details of the required and optional parameters.
 |neonWalletAddress |  String  | Address of existing EVM-compatible wallet associated with a Neon Account | true |
 |web3 | Object| Connection module of Ethereum Web3.js framework. Connects the App to the Neon EVM network.| true |
 |connection |  Object  | Connection module of Solana-Web3.js framework. You may connect to your own node if you have one. Else you will be provided with the default RPC.|        true |
-|onBeforeCreateInstructions | function |Function executed at the start of transfer intitation. It is used in both transfer functions (`createNeonTransfer` and `createSolanaTransfer`).  | false |
+|onBeforeCreateInstructions | function |Function executed at the start of transfer intitation. It's used in both transfer functions (`createNeonTransfer` and `createSolanaTransfer`).  | false |
 |onCreateNeonAccountInstruction | function | Function, executed on instruction build <!-- todo find out more --> | false |
 |onBeforeSignTransaction | function | Function called before transaction is signed by Solana-compatible wallet. <!-- todo unpack whether is used by "both" txs -->| false |
 |onBeforeNeonSign | function |Function used when you transfer from Neon EVM to Solana. Called before request for tx approval.    |       false |
