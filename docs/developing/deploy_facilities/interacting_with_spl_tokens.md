@@ -49,7 +49,7 @@ The [ERC-20-for-SPL-Mintable variant](https://github.com/neonlabsorg/neon-evm/bl
 
 ## Contract signing
 
-Depending on which output you need to be constructed, you will sign with different accounts, as shown in the table:
+Depending on which output you need to construct, you will sign with different accounts, as shown in the table:
 
 
 | Contract            | Usage                                | Requirements                               |tx signed by                                                    |
@@ -117,9 +117,9 @@ _mint_authority – address of mint/freeze authority Neon account
  </TabItem>
 </Tabs>
 
-<!-- ## Notes on usage
+## Notes on usage
 
-The ERC-20 Factory Contract is provided as a basic toolkit under ** lisence. You are invited to adapt this to your needs as required. -->
+The ERC-20 Factory Contract is provided as a basic toolkit under the MIT (X11) license. You are invited to adapt this to your needs as required.
 
 <!-- todo this probably needs its own page
 Understand accounts: Solana vs. Neon EVM
