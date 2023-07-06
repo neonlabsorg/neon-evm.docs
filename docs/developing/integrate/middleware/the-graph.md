@@ -7,38 +7,55 @@ approvedBy: na
 comment: original item https://medium.com/neon-labs/the-graph-on-neon-evm-enabling-efficient-on-chain-dapp-data-querying-d5c73e3c6bb1
 ---
 
-# Set up The Graph
+*This page outlines the steps for creating a subgraph for The Graph*
+
+<!-- Prerequisites -- what are they?! 
+
+Truffle?
+Docker compose?
+
+-->
 
 
-## Overview
+## Introduction
 
-To extract, process, and store data from a dApp contract on Neon EVM using The Graph Protocol, you must deploy a dedicated subgraph to a Graph node. 
+To extract, process, and store data from a dApp contract on Neon EVM using The Graph protocol, you must deploy a dedicated subgraph to a Graph node. 
 
 :::info
 Subgraphs map 1:1 with a dApp to provide Graph nodes with the information and logic needed to:
 - Observe the blockchain for log events of smart contacts
-- Translate the events into entities that are then stored in a database.
+- Translate the events into entities for storage
 
 :::
 
-We’ll use a simple solidity smart contract called Gravity.sol to help describe how The Graph works. Later in the article, we’ll also use Gravity.sol to walkthrough how to create and deploy a subgraph. You can find the truffle project files [here](https://github.com/neonlabsorg/examples/tree/main/the-graph-integration).
+This tutorial uses a simple solidity smart contract called Gravity.sol. You can find the truffle project files [here](https://github.com/neonlabsorg/examples/tree/main/the-graph-integration).
+
+Lets take a look at the contract we will use, paying particular attention to the events that it emits. Next we will consider the subgraph that listens to these events.
+
+## Gravity.sol overview
+
+Gravity.sol is a smart contract that links a blockchain address with a path to an image. It allows users to set avatars to their Ethereum/Neon EVM address. Each of these avatars are known as Gravatars. Gravatars include information such as owner, displayName, and imageUrl. The relationship between Gravatars and specific blockchain addresses are stored in an array.
+
+Within Gravity.sol there are four functions that allow users to create, update, and retrieve Gravatars:
+
+- `createGravatar`: on creation, `NewGravatar` event is emitted
+- `getGravatar`
+- `updateGravatarName`: on update, `UpdatedGravatar` event is emitted
+- `updateGravatarImage`: on update, `UpdatedGravatar` event is emitted
 
 
-## Gravity.sol Overview
+## Subgraph overview
 
-Gravity.sol is a smart contract that links a blockchain address with a path to an image. It essentially allows users to set avatars to their Ethereum/Neon EVM address. Each of these avatars are known as Gravatars. Gravatars include information such as owner, displayName, and imageUrl. The relationship between Gravatars and specific blockchain addresses are stored in an array.
+We need to create a subgraph to source data from Gravity.sol that will constantly observe the blockchain using Neon RPCs for the `NewGravatar` and `UpdatedGravatar` events. When one of these events is detected, the Graph node will extract the event log data and begin to process the information using a WebAssembly script defined in the subgraph.
 
-Within Gravity.sol there are four functions (createGravatar, getGravatar, updateGravatarName, updateGravatarImage) that allow users to create, update, and retrieve Gravatars. When a Gravatar is created or modified, the contract emits two types of events: NewGravatar and UpdatedGravatar.
+The script uses a GraphQL schema file in the subgraph to produce records, called entities, that represent metadata related to the recently created or updated Gravatar. These entities are stored on a database so they may be queried by API requests.
 
-## Extracting, processing, and storing data
+A subgraph is created using three main components: 
+- Subgraph manifest
+- GraphQL schema
+- AssemblyScript mapping file
 
-A Graph Node configured by a subgraph to source data from Gravity.sol will constantly observe the blockchain using Neon RPCs for the NewGravatar and UpdatedGravatar events. When one of these events is detected, the Graph node will extract the event log data and begin to process the information using a WebAssembly script defined in the subgraph.
-
-The script uses a GraphQL schema file in the subgraph to produce records, called entities, that represent metadata related to the recently created or updated Gravatar. These entities are then stored on a database so they may be queried in the future.
-Creating A Subgraph
-
-A subgraph is created using three main components: a subgraph manifest, a GraphQL schema, and an AssemblyScript Mapping file.
-Subgraph Manifest
+### Subgraph manifest
 
 The subgraph manifest is defined by the subgraph.yaml file. The manifest defines the smart contract(s) the subgraph will index, what type of events the target smart contract(s) will emit, and how to convert event data into entities that the Graph Node processes and stores for querying.
 
