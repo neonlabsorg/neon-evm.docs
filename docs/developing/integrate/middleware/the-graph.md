@@ -15,7 +15,7 @@ comment: original item https://medium.com/neon-labs/the-graph-on-neon-evm-enabli
 
 > `yarn global add @graphprotocol/graph-cli` or `npm install -g @graphprotocol/graph-cli`
 
-- Endpoints:
+- Send request info@neonevm.org to be added to the allowlist for The Graph endpoints:
     - IPFS: https://ipfs.neonevm.org
     - Graph UI: https://thegraph.neonevm.org
     - Deployment: https://thegraph.neonevm.org/deploy
@@ -121,7 +121,16 @@ The address of the contract deployed to the `dataSources.network` in the subgrap
 
 When you have finished creating the subgraph manifest, the subgraph’s GraphQL schema, and the AssemblyScript Mapping file, you’re ready to deploy the subgraph.
 
-### Step 1: create
+### Step 1: request access
+
+Access to the allowlist for The Graph endpoints must be made to info@neonevm.org. You will be added to the allowlist for:
+
+- IPFS: https://ipfs.neonevm.org
+- Graph UI: https://thegraph.neonevm.org
+- Deployment: https://thegraph.neonevm.org/deploy
+- GraphQL: https://thegraph.neonevm.org/index-node/graphql
+
+### Step 2: create
 
 For example, let's create a subgraph called `test-subgraph` on Neon EVM. From The Graph CLI, run:
 
@@ -129,7 +138,7 @@ For example, let's create a subgraph called `test-subgraph` on Neon EVM. From Th
 graph create neonlabs/test-subgraph --node https://thegraph.neonevm.org/deploy/
 ```
 
-### Step 2: instantiate 
+### Step 3: instantiate 
 
 In the CLI, instantiate `test-subgraph` with:
 
@@ -143,7 +152,7 @@ graph codegen
 graph build
 ```
 
-### Step 3: deploy
+### Step 4: deploy
 
 Deploy to the Graph node with:
 
@@ -151,7 +160,7 @@ Deploy to the Graph node with:
 graph deploy neonlabs/test-subgraph --ipfs https://ipfs.neonevm.org/ --node https://thegraph.neonevm.org/deploy/ --version-label="v0.0.1"
 ```
 
-### Step 4: record
+### Step 5: record
 
 Finally, record the output of the previous command: the URL at which your subgraph provides the API service feed for your data.
 
