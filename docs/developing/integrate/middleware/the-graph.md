@@ -7,7 +7,7 @@ approvedBy: na
 comment: original item https://medium.com/neon-labs/the-graph-on-neon-evm-enabling-efficient-on-chain-dapp-data-querying-d5c73e3c6bb1 the examples repo has (out of date) full proxy local/Solana/Tracer/Indexer for Graph here https://github.com/neonlabsorg/examples/blob/main/the-graph-integration/README.md For the graph we will have separate RPC Endpoint not public 
 ---
 
-*This page presents a high-levl overview of how to create a subgraph for The Graph and the endpoint services provided by Neon EVM.*
+*This page presents a high-level overview of how to create a subgraph for The Graph and the endpoint services provided by Neon EVM.*
 
 ## TL;DR
 
@@ -21,9 +21,10 @@ comment: original item https://medium.com/neon-labs/the-graph-on-neon-evm-enabli
     - Deployment: https://thegraph.neonevm.org/deploy
     - GraphQL: https://thegraph.neonevm.org/index-node/graphql
 
-## Prerequisites for a standard flow
+## Prerequisites for standard flow
 
-::: info 
+:::info 
+
 The standard flow is where the end user deploys and collects data from their own contract. In the standard flow you: 
 
 1. Deploy a contract to Neon EVM
@@ -36,14 +37,14 @@ The standard flow is where the end user deploys and collects data from their own
 ::: 
 
 - Smart contract address on Neon EVM 
-- ABI file for deployed contract 
+- ABI file for the deployed contract 
 - Graph CLI: see [The Graph docs](https://thegraph.com/docs/en/cookbook/quick-start)
 
 ## Neon EVM-specific deviations
 
 On the Solana blockchain, data accounts are used to temporarily store data, with a history of days. While on the Ethereum blockchain, data is stored within smart contracts. Neon EVM offers an intermediate approach by storing Solana account data for an extended period to support tracing services.
 
-This means that The Graph may not be able to aquire all data according to the block number assigned. It is important that endusers consider what data they wish to extract and store from the API service provided by their subgraph for future use.
+This means that The Graph may not be able to acquire all data according to the block number assigned. It is important that end users consider what data they wish to extract and store from the API service provided by their subgraph for future use.
 
 ## Introduction
 
@@ -68,9 +69,9 @@ A subgraph is created using three main components:
 - AssemblyScript mapping file
 
 
-::: info
+:::info
 
-Learn more from [The Graph documentaiton](https://thegraph.com/docs/en/developing/creating-a-subgraph).
+Learn more from [The Graph documentation](https://thegraph.com/docs/en/developing/creating-a-subgraph).
 
 :::
 
@@ -90,7 +91,7 @@ The following subgraph manifest items deserve particular attention:
 
 > Omitting address allows you to index matching events from all contracts.
 
-The ABI file a JSON file created when a Solidity contract is compiled. It contains information on functions in the smart contract and types of events that will be emitted. 
+The ABI file is a JSON file created when a Solidity contract is compiled. It contains information on functions in the smart contract and types of events that will be emitted. 
 
 Contracts fall into two broad types: personal, i.e. a contract that you have developed and deployed, and private. Let's consider how you collect ABI files for each.
 
@@ -106,7 +107,7 @@ If you’re developing a subgraph for an existing public project, you will need 
 
 `dataSources.networking` is important for deploying subgraphs on Neon EVM. The property maps to the network configuration provided in your project’s truffle.js file.
 
-::: tip
+:::tip
 
 If you set  `dataSources.networking` to `neonlabs.`, then the manifest file will pull the corresponding “neonlabs” network configurations as setup in your project’s truffle.js file. 
 
@@ -144,7 +145,7 @@ graph build
 
 ### Step 3: deploy
 
-Deploy with:
+Deploy to the Graph node with:
 
 ```bash
 graph deploy neonlabs/test-subgraph --ipfs https://ipfs.neonevm.org/ --node https://thegraph.neonevm.org/deploy/ --version-label="v0.0.1"
@@ -154,11 +155,10 @@ graph deploy neonlabs/test-subgraph --ipfs https://ipfs.neonevm.org/ --node http
 
 Finally, record the output of the previous command: the URL at which your subgraph provides the API service feed for your data.
 
-From our example: 
 
 ## What next?
 
-If you are new to The Graph and need further support, consider trying our [full walkthrough](https://medium.com/neon-labs/the-graph-on-neon-evm-enabling-efficient-on-chain-dapp-data-querying-d5c73e3c6bb1) for setting up and deploying a subgraph on Neon EVM.
+If you are new to The Graph and need further support, consider trying our [full walk-through](https://medium.com/neon-labs/the-graph-on-neon-evm-enabling-efficient-on-chain-dapp-data-querying-d5c73e3c6bb1) for setting up and deploying a subgraph on Neon EVM.
 
 
 <!-- ## Gravity.sol overview
