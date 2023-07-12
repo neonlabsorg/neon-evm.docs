@@ -61,7 +61,7 @@ Subgraphs map 1:1 with a dApp to provide Graph nodes with the information and lo
 
 We need to create a subgraph to source data from the contract/s of interest that will constantly observe the blockchain using [your chosen Neon RPC](https://chainlist.org/?chain=245022926&testnets=true&search=Neon+EVM) for your events on interest. When one of these events is detected, the Graph node will extract the event log data and begin to process the information using a WebAssembly script defined in the subgraph.
 
-The script uses a GraphQL schema file in the subgraph to produce records, called entities, that represent metadata related to the recently created or updated Gravatar. These entities are stored on a database so they may be queried by API requests.
+The script uses a GraphQL schema file in the subgraph to produce records, called entities, that represent metadata related to your query. These entities are stored on a database so they may be queried by API requests.
 
 A subgraph is created using three main components: 
 - Subgraph manifest
@@ -82,7 +82,7 @@ The subgraph manifest is defined by the subgraph.yaml file. The manifest defines
 The following subgraph manifest items deserve particular attention:
 
 - `dataSources.source`
-- `dataSources.networking`
+- `dataSources.network`
 - `dataSources.source.address`
 
 #### `dataSources.source`
