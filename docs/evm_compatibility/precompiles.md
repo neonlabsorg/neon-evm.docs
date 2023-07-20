@@ -20,3 +20,10 @@ However, there are some precompiled contracts that Neon does not support. Contra
 * bn256Pairing — Elliptic curve pairing operations to perform zkSTARKs verification within the block gas limit.
 
 The Neon EVM requires the implementation of system calls in Solana for these contracts.
+
+## Opcodes
+* COINBASE - always returns zero
+* DIFFICULTY / PREVRANDAO - always returns zero
+* GASLIMIT(block gas limit) - always returns U256::MAX
+* GAS(gas left in the transaction) - returns transaction gas limit
+* BASEFEE - always returns zero
