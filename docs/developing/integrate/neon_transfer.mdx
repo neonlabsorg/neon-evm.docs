@@ -1,0 +1,132 @@
+---
+title: Neon Transfer Client
+proofedDate: na
+iterationBy: na
+includedInSite: true
+approvedBy: na
+comment: todo this requires overhaul
+---
+
+import { DemoFrame } from '@site/src/components/DemoFrame';
+
+This page provides you with the information required to pass tokens between Solana and Neon EVM programmatically.
+
+## TL;DR
+
+- The tool is available as an npm package
+- The package provides the same function as the [NeonPass UI](https://devnet.neonpass.live)
+- You can see [React Demo](https://codesandbox.io/s/neon-transfer-demo-z93nlj).
+
+## Introduction
+
+The following npm package provides a token pass tool: the same package provides the functionality
+to [NeonPass UI](https://devnet.neonpass.live).
+We prepared list of functions for transfer NEON or ERC-20 tokens between Solana and Neon EVM.
+
+You need to provide Solana and Neon EVM providers from supported official libraries as `@solana/web3.js` or `web3.js`
+, `ether.js` and `WalletConnect`. You can using supported browse plugins (like, Phantom wallet, or MetaMask wallet).
+
+## Install and setup
+
+Firstly, install the package, use yarn or npm cli:
+
+```sh
+yarn add neon-portal
+# or
+npm install neon-portal --save
+```
+
+## Create access to providers
+
+Create access for providers and connect wallets for Neon EVM and Solana networks (in examples we using `web3.js`, but
+possible using `wagmi` or `ether.js`)
+
+```javascript
+import { clusterApiUrl } from '@solana/web3.js';
+import Web3 from 'web3';
+
+const SOLANA_DEVNET = clusterApiUrl('devnet');
+const NEON_DEVNET = new Web3.providers.HttpProvider('https://devnet.neonevm.org');
+const connection = new Connection(SOLANA_DEVNET, 'confirmed');
+const web3 = new Web3(NEON_DEVNET);
+
+// Simple way use private keys for wallets
+// For integration browser ext, read official wallets docs.
+const solanaWallet = Keypair.fromSecretKey(decode(`<your private solana key>`));
+const neonWallet = web3.eth.accounts.privateKeyToAccount(`<your private neon key>`);
+```
+## Using Neon EVM proxy status
+
+We employ the `evmParams` method from Neon EVM to obtain specific addresses and constants required for seamless operations.
+
+```javascript
+const proxyApi = new NeonProxyRpcApi(urls);
+// ...
+const neonProxyStatus = await proxyApi.evmParams();
+const neonEvmProgram = new PublicKey(neonProxyStatus.NEON_EVM_ID);
+const neonTokenMint = new PublicKey(neonProxyStatus.NEON_TOKEN_MINT);
+```
+
+And still, for testing you can use `NEON_TRANSFER_CONTRACT_DEVNET` or `NEON_TRANSFER_CONTRACT_MAINNET` constants. This objects contains snapshots with latest `neonProxyStatus` state.
+
+## Transfer NEON transactions
+
+To generate a transaction for transferring NEON from Solana to Neon EVM, utilize the functions found in the `neon-transfer.ts` file.
+
+```javascript
+const neonToken: SPLToken = {
+  ...NEON_TOKEN_MODEL,
+  address_spl: proxyStatus.NEON_TOKEN_MINT,
+  chainId: CHAIN_ID
+};
+const transaction = await solanaNEONTransferTransaction(solanaWallet, neonWallet, neonEvmProgram, neonTokenMint, neonToken, amount); // Solana Transaction object
+transaction.recentBlockhash = (await connection.getLatestBlockhash('finalized')).blockhash; // Network blockhash
+const solanaSignature = await sendSolanaTransaction(connection, transaction, [signer], false, { skipPreflight: false }); // method for sign and send transaction to network
+console.log(solanaSignature);
+```
+
+And for transfer NEON from Neon EVM to Solana, you can using this pattern:
+
+```javascript
+const transaction = await neonNeonWeb3Transaction(web3, neonWallet, NEON_TRANSFER_CONTRACT_DEVNET, solanaWallet, amount); // Neon EVM Transaction object
+const neonSignature = await sendNeonTransaction(web3, transaction, neonWallet); // method for sign and send transaction to network
+console.log(neonSignature);
+```
+
+## Transfer ERC20 transactions
+
+When working with Devnet, Testnet, or Mainnet, different ERC20 tokens are utilized. We have compiled a [token-list](https://github.com/neonlabsorg/token-list) containing the tokens supported and available on Neon EVM. For further information, please refer to [this page](/docs/tokens/token_list.md).
+
+For transfer ERC20 tokens from Solana to Neon EVM, using this patterns:
+
+```javascript
+const token = tokenList[0];
+const transaction = await neonTransferMintWeb3Transaction(connection, web3, proxyApi, proxyStatus, neonEvmProgram, solanaWallet, neonWallet, token, amount);
+transaction.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
+const solanaSignature = await sendSolanaTransaction(connection, transaction, [signer], true, { skipPreflight: false });
+console.log(solanaSignature);
+```
+
+And for transfer ERC20 tokens from Neon EVM to Solana:
+
+```javascript
+const token = tokenList[0];
+const mintPubkey = new PublicKey(token.address_spl);
+const associatedToken = getAssociatedTokenAddressSync(mintPubkey, solanaWallet);
+const solanaTransaction = createMintSolanaTransaction(solanaWallet, mintPubkey, associatedToken, proxyStatus);
+solanaTransaction.recentBlockhash = (await connection.getLatestBlockhash()).blockhash;
+const neonTransaction = await createMintNeonWeb3Transaction(web3, neonWallet.address, associatedToken, token, amount);
+const signedSolanaTransaction = await sendSolanaTransaction(connection, solanaTransaction, [signer], true, { skipPreflight: false });
+const signedNeonTransaction = await sendNeonTransaction(web3, neonTransaction, neonWallet);
+console.log(signedSolanaTransaction, signedNeonTransaction);
+```
+
+Within the Neon Transfer codebase, we employ the [web3.js](https://web3js.readthedocs.io/en/v1.10.0/) library to streamline our code. However, if the situation demands, you can opt for alternatives such as [ethers.js](https://docs.ethers.org/v6/) or [WalletConnect](https://walletconnect.com/).
+
+## React using
+
+For using in React app we prepared live demo with open codebase, you can investigate and using it in [Github Repository](https://github.com/neonlabsorg/neon-client-transfer/tree/master/examples/react/neon-transfer-react).
+
+<DemoFrame id='neon-transfer-react'
+  src='https://codesandbox.io/embed/neon-transfer-demo-z93nlj?fontsize=14&hidenavigation=1&theme=dark'
+  title='Neon-Transfer-Demo'></DemoFrame>
