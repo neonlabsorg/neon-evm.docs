@@ -4,42 +4,63 @@ proofedDate: na
 iterationBy: na
 includedInSite: true
 approvedBy: na
-comment: todo this requires overhaul
+comment: Vale not setup for mdx on this branch -- needs merge of branch with fix to do full proof. Grammarly proofing done
 ---
 
 import { DemoFrame } from '@site/src/components/DemoFrame';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-This page provides you with the information required to pass tokens between Solana and Neon EVM programmatically.
+
+This page explains how to pass tokens between Solana and Neon EVM programmatically.
 
 ## TL;DR
 
-- The tool is available as an npm package
-- The package provides the same function as the [NeonPass UI](https://devnet.neonpass.live)
-- You can see [React Demo](https://codesandbox.io/s/neon-transfer-demo-z93nlj).
+- [NeonPass UI](https://devnet.neonpass.live) is available as an npm package
+- [React demo](https://codesandbox.io/s/neon-transfer-demo-z93nlj) available.
 
 ## Introduction
 
-The following npm package provides a token pass tool: the same package provides the functionality
-as the [NeonPass UI](https://devnet.neonpass.live).
-The package provides the functions for transfer NEON or ERC-20 tokens between Solana and Neon EVM.
+This page describes how to use the Neon token pass tool: providing the same functionality as the [NeonPass UI](https://devnet.neonpass.live).
+The tool is an npm package that supports the transfer of SPL or ERC-20 tokens between Solana and Neon EVM.
 
-You need to provide Solana and Neon EVM providers from supported official libraries as `@solana/web3.js` or `web3.js`
-, `ether.js` and `WalletConnect`. You can using supported browse plugins (like, Phantom wallet, or MetaMask wallet).
+<!-- todo confirm ok to remove only NEON -- we have other supported SPL tokens -->
 
-## Install and setup
+## Prerequisites
 
-Firstly, install the package, use yarn or npm cli:
+- You need to provide Solana and Neon EVM providers from supported official libraries such as `@solana/web3.js` or `web3.js`
+, `ether.js`, and `WalletConnect`. 
+- Supported browser plugins (e.g. Phantom or MetaMask wallets).
+
+<!-- I don't understand provide providers above -->
+
+## Step 1: Install and setup
+
+### 1.1 Install the package
+
+<Tabs>
+  <TabItem value="Opt1" label="Yarn" default>
 
 ```sh
 yarn add neon-portal
-# or
-npm install neon-portal --save
 ```
 
-## Create access to providers
+</TabItem>
+<TabItem value="Opt2" label="npm" default>
 
-Create access for providers and connect wallets for Neon EVM and Solana networks (in examples we using `web3.js`, but
-possible using `wagmi` or `ether.js`)
+```sh
+npm install neon-portal --save
+```
+</TabItem>
+</Tabs>
+
+### 1.2 Enable access to wallets
+
+Next, create access for providers and connect wallets for Neon EVM and Solana networks.
+
+:::note
+The following example uses `web3.js`, but it is also possible  to use [alternatives](#alternative-libraries).
+:::
 
 ```javascript
 import { clusterApiUrl } from '@solana/web3.js';
@@ -50,12 +71,12 @@ const NEON_DEVNET = new Web3.providers.HttpProvider('https://devnet.neonevm.org'
 const connection = new Connection(SOLANA_DEVNET, 'confirmed');
 const web3 = new Web3(NEON_DEVNET);
 
-// Simple way use private keys for wallets
-// For integration browser ext, read official wallets docs.
-const solanaWallet = Keypair.fromSecretKey(decode(`<your private solana key>`));
-const neonWallet = web3.eth.accounts.privateKeyToAccount(`<your private neon key>`);
+// Simple way to use private keys for wallets
+// For integration of browser ext., read official wallets docs.
+const solanaWallet = Keypair.fromSecretKey(decode(`<your private Solana key>`));
+const neonWallet = web3.eth.accounts.privateKeyToAccount(`<your private Neon EVM key>`);
 ```
-## Using Neon EVM proxy status
+### 1.3 Configure parameters
 
 We employ the `evmParams` method from Neon EVM to obtain specific addresses and constants required for seamless operations.
 
@@ -67,11 +88,19 @@ const neonEvmProgram = new PublicKey(neonProxyStatus.NEON_EVM_ID);
 const neonTokenMint = new PublicKey(neonProxyStatus.NEON_TOKEN_MINT);
 ```
 
-And still, for testing you can use `NEON_TRANSFER_CONTRACT_DEVNET` or `NEON_TRANSFER_CONTRACT_MAINNET` constants. This objects contains snapshots with latest `neonProxyStatus` state.
+:::note
+For testing, use `NEON_TRANSFER_CONTRACT_DEVNET` or `NEON_TRANSFER_CONTRACT_MAINNET` constants. These objects contain snapshots with the latest `neonProxyStatus` state.
+:::
 
-## Transfer NEON transactions
+## Step 2: Transfer tokens
 
-To generate a transaction for transferring NEON from Solana to Neon EVM, utilize the functions found in the `neon-transfer.ts` file.
+### Transfer NEON
+
+<Tabs>
+  <TabItem value="Opt1" label="Solana to Neon EVM" default>
+
+
+This example will generate a transaction to transfer NEON from Solana to Neon EVM. It utilizes the functions found in the `neon-transfer.ts` file.
 
 ```javascript
 const neonToken: SPLToken = {
@@ -85,7 +114,10 @@ const solanaSignature = await sendSolanaTransaction(connection, transaction, [si
 console.log(solanaSignature);
 ```
 
-And for transfer NEON from Neon EVM to Solana, you can using this pattern:
+</TabItem>
+<TabItem value="Opt2" label="Neon EVM to Solana" default>
+
+Similarly, to transfer NEON from Neon EVM to Solana, use this pattern:
 
 ```javascript
 const transaction = await neonNeonWeb3Transaction(web3, neonWallet, NEON_TRANSFER_CONTRACT_DEVNET, solanaWallet, amount); // Neon EVM Transaction object
@@ -93,11 +125,20 @@ const neonSignature = await sendNeonTransaction(web3, transaction, neonWallet); 
 console.log(neonSignature);
 ```
 
-## Transfer ERC20 transactions
+</TabItem>
+</Tabs>
 
-When working with Devnet, Testnet, or Mainnet, different ERC20 tokens are utilized. We have compiled a [token-list](https://github.com/neonlabsorg/token-list) containing the tokens supported and available on Neon EVM. For further information, please refer to [this page](/docs/tokens/token_list.md).
 
-For transfer ERC20 tokens from Solana to Neon EVM, using this patterns:
+### Transfer ERC-20 tokens
+
+When working with Devnet, Testnet, or Mainnet, different ERC-20 tokens are utilized. We maintain a JSON [list of supported tokens](https://github.com/neonlabsorg/token-list). Alternatively, please refer to the [token list](/docs/tokens/token_list.md).
+
+<!-- todo we need a single source of truth not 2 different pages to go to which may drift! Suggest JSON as API to feed the docs site -->
+
+<Tabs>
+  <TabItem value="Opt1" label="Solana to Neon EVM" default>
+
+To transfer ERC-20 tokens from Solana to Neon EVM, use the following patterns:
 
 ```javascript
 const token = tokenList[0];
@@ -107,7 +148,10 @@ const solanaSignature = await sendSolanaTransaction(connection, transaction, [si
 console.log(solanaSignature);
 ```
 
-And for transfer ERC20 tokens from Neon EVM to Solana:
+</TabItem>
+<TabItem value="Opt2" label="Neon EVM to Solana" default>
+
+Similarly, to transfer ERC-20 tokens from Neon EVM to Solana:
 
 ```javascript
 const token = tokenList[0];
@@ -121,11 +165,17 @@ const signedNeonTransaction = await sendNeonTransaction(web3, neonTransaction, n
 console.log(signedSolanaTransaction, signedNeonTransaction);
 ```
 
-Within the Neon Transfer codebase, we employ the [web3.js](https://web3js.readthedocs.io/en/v1.10.0/) library to streamline our code. However, if the situation demands, you can opt for alternatives such as [ethers.js](https://docs.ethers.org/v6/) or [WalletConnect](https://walletconnect.com/).
+</TabItem>
+</Tabs>
 
-## React using
 
-For using in React app we prepared live demo with open codebase, you can investigate and using it in [Github Repository](https://github.com/neonlabsorg/neon-client-transfer/tree/master/examples/react/neon-transfer-react).
+## Alternative libraries
+
+Within the Neon Transfer codebase, we employ the [web3.js](https://web3js.readthedocs.io/en/v1.10.0/) library to streamline our code. However, you can opt for alternatives such as [@solana/web3.js](https://docs.solana.com/developing/clients/javascript-api), [ethers.js](https://docs.ethers.org/v6/), or [WalletConnect](https://walletconnect.com/).
+
+## React App
+
+The following [live demo with an open codebase](https://github.com/neonlabsorg/neon-client-transfer/tree/master/examples/react/neon-transfer-react) supports the tooling via React App.
 
 <DemoFrame id='neon-transfer-react'
   src='https://codesandbox.io/embed/neon-transfer-demo-z93nlj?fontsize=14&hidenavigation=1&theme=dark'
