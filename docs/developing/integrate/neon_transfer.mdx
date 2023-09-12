@@ -24,8 +24,6 @@ This page explains how to pass tokens between Solana and Neon EVM programmatical
 This page describes how to use the Neon token pass tool: providing the same functionality as the [NeonPass UI](https://devnet.neonpass.live).
 The tool is an npm package that supports the transfer of SPL or ERC-20 tokens between Solana and Neon EVM.
 
-<!-- todo confirm ok to remove only NEON -- we have other supported SPL tokens -->
-<!-- All tokens on Solana (apart from SOL) are SPL tokens, on Neon EVM all tokens are ERC-20 (apart from NEON, wNEON). I think it ok -->
 
 ## Prerequisites
 
@@ -172,7 +170,7 @@ console.log(signedSolanaTransaction, signedNeonTransaction);
 
 ## Alternative libraries
 
-Within the Neon Transfer codebase, we employ the [web3.js](https://web3js.readthedocs.io/en/v1.10.0/) library to streamline our code. However, you can opt for alternatives such as [@solana/web3.js](https://docs.solana.com/developing/clients/javascript-api), [ethers.js](https://docs.ethers.org/v6/), or [WalletConnect](https://walletconnect.com/).
+We employ the [web3.js](https://web3js.readthedocs.io/en/v1.10.0/) library to streamline our code within the Neon Transfer codebase. However, you can opt for alternatives such as [ethers.js](https://docs.ethers.org/v6/), or [WalletConnect](https://walletconnect.com/).
 
 ## React App
 
