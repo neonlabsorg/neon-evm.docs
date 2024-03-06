@@ -12,12 +12,7 @@ const sidebars = {
     {
       type: 'category',
       label: '🧬 Neon EVM Overview',
-      items:
-        [
-          'about/why_neon',
-          'about/neon_ecosystem',
-          'about/how_it_works'
-        ]
+      items: ['about/why_neon', 'about/neon_ecosystem', 'about/how_it_works']
     },
     {
       type: 'doc',
@@ -32,20 +27,13 @@ const sidebars = {
     {
       type: 'category',
       label: '💰 Tokens',
-      items: [
-        'tokens/neon_token',
-        'tokens/gas_fees',
-        'tokens/token_list'
-      ]
+      items: ['tokens/neon_token', 'tokens/gas_fees', 'tokens/token_list']
     },
     { type: 'doc', label: 'Neon Proxy API', id: 'api/neon-api' },
     {
       type: 'category',
       label: '💬 FAQ',
-      items: [
-        'faq/neon-brief-faq',
-        'faq/neonpass'
-      ]
+      items: ['faq/neon-brief-faq', 'faq/neonpass']
     },
     { type: 'html', value: '<div class="sidebar-menu-divider"/>' },
     { type: 'html', value: '<h4 class="sidebar-menu-title">Tools</h4>' },
@@ -92,7 +80,8 @@ const sidebars = {
         'developing/integrate/oracles/integrating_chainlink',
         'developing/integrate/oracles/integrating_pyth',
         'developing/integrate/middleware/the-graph',
-        'developing/integrate/indexer/flair'
+        'developing/integrate/indexer/flair',
+        'developing/integrate/indexer/subsquid'
       ]
     },
     {
@@ -143,9 +132,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'Token Accounts',
-      items: [
-        'tokens/token-accounts'
-      ]
+      items: ['tokens/token-accounts']
     },
     { type: 'html', value: '<div class="sidebar-menu-divider"/>' },
     { type: 'html', value: '<h4 class="sidebar-menu-title">Operate</h4>' },
@@ -157,20 +144,12 @@ const sidebars = {
     {
       type: 'category',
       label: 'Run Neon Proxy',
-      items: [
-        'operating/basic',
-        'operating/enhanced',
-        'operating/installation/setup_kubernetes'
-      ]
+      items: ['operating/basic', 'operating/enhanced', 'operating/installation/setup_kubernetes']
     },
     {
       type: 'category',
       label: 'Configuration',
-      items: [
-        'operating/transaction-gas',
-        'operating/accounts',
-        'operating/configuration'
-      ]
+      items: ['operating/transaction-gas', 'operating/accounts', 'operating/configuration']
     },
     { type: 'html', value: '<div class="sidebar-menu-divider"/>' },
     { type: 'html', value: '<h4 class="sidebar-menu-title">Govern</h4>' },
