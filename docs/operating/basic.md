@@ -46,16 +46,25 @@ Working at the root folder of the proxy-model.py codebase:
 
 3.1 Pull the Docker image:
 
+   In case you intend to use an external Solana node:
+  ```bash
+        docker-compose -f ./docker-compose/docker-compose-remote-solana.yml pull
+  ```
+Otherwise:
 ```bash
-docker-compose -f ./docker-compose/docker-compose-test.yml pull
+docker-compose -f ./docker-compose/docker-compose-ci.yml pull
 ```
 
 3.2 Start the proxy with:
 
+In case you intend to use an external Solana node:
 ```bash
-docker-compose -f ./docker-compose/docker-compose-test.yml up
+docker-compose -f ./docker-compose/docker-compose-remote-solana.yml up
 ```
-
+Otherwise:
+```bash
+docker-compose -f ./docker-compose/docker-compose-ci.yml up
+```
 
 <Tabs>
   <TabItem value="View" label="Code" default>
