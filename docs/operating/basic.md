@@ -46,10 +46,10 @@ Working at the root folder of the proxy-model.py codebase:
 
 3.1 Pull the Docker image:
 
-   In case you intend to use an external Solana node:
-  ```bash
-        docker-compose -f ./docker-compose/docker-compose-remote-solana.yml pull
-  ```
+In case you intend to use an external Solana node:
+```bash
+docker-compose -f ./docker-compose/docker-compose-remote-solana.yml pull
+```
 Otherwise:
 ```bash
 docker-compose -f ./docker-compose/docker-compose-ci.yml pull
