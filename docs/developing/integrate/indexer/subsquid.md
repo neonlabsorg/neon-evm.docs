@@ -206,6 +206,7 @@ The finished GraphQL API with GraphiQL will be available at localhost:4350/graph
 Please follow the quick start github tutorial _[Subsquid SDK Example](https://github.com/neonlabsorg/neon-tutorials/tree/main/subsquid)_.
 :::
 
+<!--
 ## Changes needed to run a squid on Neon EVM Mainnet
 
 To run a squid on Neon EVM Mainnet, there needs to be some changes to some of the above mentioned steps.
@@ -219,3 +220,4 @@ To run a squid on Neon EVM Mainnet, there needs to be some changes to some of th
 - `lookupArchive("neon-mainnet")`
 - `setBlockRange({ from: 195350522 })` (Neon EVM Mainnet genesis block)
 - `address: ["0x202c35e517fa803b537565c40f0a6965d7204609"]` (WNEON contract address on Neon EVM Mainnet)
+-->
