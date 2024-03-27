@@ -19,7 +19,7 @@ Here's an example of how SDK packages can be combined into a working indexer (ca
 - NodeJS 16.x or newer
 - Docker
 
-## How to run a squid
+## How to run a squid on Neon EVM Devnet
 
 ### Step 1: Initialize a node project
 
@@ -205,3 +205,17 @@ The finished GraphQL API with GraphiQL will be available at localhost:4350/graph
 :::info
 Please follow the quick start github tutorial _[Subsquid SDK Example](https://github.com/neonlabsorg/neon-tutorials/tree/main/subsquid)_.
 :::
+
+## Changes needed to run a squid on Neon EVM Mainnet
+
+To run a squid on Neon EVM Mainnet, there needs to be some changes to some of the above mentioned steps.
+
+1. Replace `RPC_NEON_HTTP=https://devnet.neonevm.org` to `RPC_NEON_HTTP=https://neon-proxy-mainnet.solana.p2p.org` in the `.env` file in **Step 6.1**
+
+2. Get the WNEON contract's ABI from the mainnet (https://neonscan.org/address/0x202c35e517fa803b537565c40f0a6965d7204609#contract) in **Step 7.2**
+
+3. In **Step 8**, change to the following in the `src/main.ts` file:
+
+- `lookupArchive("neon-mainnet")`
+- `setBlockRange({ from: 195350522 })` (Neon EVM Mainnet genesis block)
+- `address: ["0x202c35e517fa803b537565c40f0a6965d7204609"]` (WNEON contract address on Neon EVM Mainnet)
