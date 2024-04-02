@@ -71,6 +71,10 @@ The details of the unsupported opcodes are described [here](https://docs.neonevm
 
 The smart contracts having `multicall` methods that includes more than one address or migration methods to recreate state from another chain results in exceeding the 64 accounts limit. This situation can be avoided by calling these methods in batches.
 
+:::info
+The restriction of 64 accounts doesn't translate directly to 64 addresses in Solidity. Additionally, there are 7 default accounts designated for transaction execution, effectively reducing the allowable Solidity addresses in a single transaction to 57. This limit may further decrease if there are additional internal calls between contracts.
+:::
+
 ### Emitting big events data
 
 Smart contracts shouldn't emit big data through events such as array of bytes or strings or single bytes or string variable through a `multicall` method which eventually generates a big event log if there are a lot of multicall iterations.
