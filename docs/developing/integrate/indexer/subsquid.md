@@ -1,5 +1,5 @@
 ---
-title: 'Subsquid'
+title: 'Subsquid SDK Integration'
 proofedDate: N/A
 includedInSite: false
 approvedBy: na
@@ -32,7 +32,7 @@ npm init
 ### Step 2: Install dependencies
 
 ```sh
-npm i @subsquid/evm-processor @subsquid/typeorm-store @subsquid/typeorm-migration @subsquid/graphql-server @subsquid/archive-registry
+npm i @subsquid/evm-processor @subsquid/typeorm-store @subsquid/typeorm-migration @subsquid/graphql-server
 
 npm i typescript @subsquid/typeorm-codegen @subsquid/evm-typegen @@subsquid/util-internal-validation --save-dev
 ```
@@ -143,12 +143,11 @@ Paste the following lines of code into `main.ts` -
 ```sh
 import { EvmBatchProcessor } from "@subsquid/evm-processor";
 import { TypeormDatabase } from "@subsquid/typeorm-store";
-import { lookupArchive } from "@subsquid/archive-registry";
 import * as wneonAbi from "./abi/wneon";
 import { Transfer } from "./model";
 
 const processor = new EvmBatchProcessor()
-  .setGateway(lookupArchive("neon-devnet"))
+  .setGateway("https://v2.archive.subsquid.io/network/neon-devnet")
   .setRpcEndpoint({
     // set RPC endpoint in .env
     url: process.env.RPC_NEON_HTTP,
@@ -206,7 +205,6 @@ The finished GraphQL API with GraphiQL will be available at localhost:4350/graph
 Please follow the quick start github tutorial _[Subsquid SDK Example](https://github.com/neonlabsorg/neon-tutorials/tree/main/subsquid)_.
 :::
 
-<!--
 ## Changes needed to run a squid on Neon EVM Mainnet
 
 To run a squid on Neon EVM Mainnet, there needs to be some changes to some of the above mentioned steps.
@@ -217,7 +215,6 @@ To run a squid on Neon EVM Mainnet, there needs to be some changes to some of th
 
 3. In **Step 8**, change to the following in the `src/main.ts` file:
 
-- `lookupArchive("neon-mainnet")`
+- `setGateway("https://v2.archive.subsquid.io/network/neon-mainnet")`
 - `setBlockRange({ from: 195350522 })` (Neon EVM Mainnet genesis block)
 - `address: ["0x202c35e517fa803b537565c40f0a6965d7204609"]` (WNEON contract address on Neon EVM Mainnet)
--->
