@@ -16,7 +16,7 @@ Before beginning the tutorial below, make sure that you have properly [configure
 
 This tutorial is based on the example located in [this repository](https://github.com/neonlabsorg/neon-tutorials/tree/main/hardhat).
 
-By the end of this tutorial, you will verify a contract that deploys an ERC-20 token to Neon EVM Devnet on Neonscan and Blockscout explorers.
+By the end of this tutorial, you will learn to verify a contract that deploys an ERC-20 token to Neon EVM Devnet on Neonscan and Blockscout explorers.
 
 ## Step 1: Deploy the contract
 

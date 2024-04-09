@@ -91,7 +91,10 @@ const sidebars = {
     {
       type: 'category',
       label: 'Verify Contracts',
-      items: ['developing/verify_facilities/using_hardhat']
+      items: [
+        'developing/verify_facilities/using_hardhat',
+        'developing/verify_facilities/using_foundry'
+      ]
     },
     {
       type: 'category',
