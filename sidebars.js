@@ -90,6 +90,11 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: 'Verify Contracts',
+      items: ['developing/verify_facilities/using_hardhat']
+    },
+    {
+      type: 'category',
       label: 'Configure Dev Tools',
       items: [
         'developing/deploy_facilities/configure_hardhat',
