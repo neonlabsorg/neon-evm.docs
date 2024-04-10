@@ -22,7 +22,7 @@ If the contracts are not clean fork like Uniswap V2 or Aave V2 and the solidity 
 Solidity version ≥ 0.8.25 is not supported currently because of the need to implement EIP-5656 and EIP-1153. It will be supported on Devnet and Mainnet soon.
 :::
 
-### Usage of third party protocols
+### Usage of third-party protocols
 
 There shouldn't be any usage of third party protocols that are not currently supported on Neon EVM.
 
