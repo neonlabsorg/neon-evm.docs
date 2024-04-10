@@ -17,7 +17,7 @@ The following are the factors that determine the smart contract code compatibili
 
 ### Solidity Compiler version
 
-If the contracts are not clean fork like Uniswap V2 or Aave V2 and the solidity compiler is very old i.e, < 0.8.x, it is always recommended to upgrade to latest stable solidity compiler version and re-run the tests.
+If the contracts are not clean fork like Uniswap V2 or Aave V2 and the solidity compiler is very old i.e. < 0.8.x, it is always recommended to upgrade to the latest stable solidity compiler version and re-run the tests.
 :::info
 Solidity version ≥ 0.8.25 is not supported currently because of the need to implement EIP-5656 and EIP-1153. It will be supported on Devnet and Mainnet soon.
 :::
