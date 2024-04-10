@@ -77,7 +77,7 @@ The restriction of 64 accounts doesn't translate directly to 64 addresses in Sol
 
 ### Emitting big events data
 
-Smart contracts shouldn't emit big data through events such as array of bytes or strings or single bytes or string variable through a `multicall` method which eventually generates a big event log if there are a lot of multicall iterations.
+Smart contracts shouldn't emit big data through events such as an array of bytes or strings or a single bytes or string variable through a `multicall` method, which eventually generates a big event log if there are a lot of multicall iterations.
 
 Every Solana transaction which corresponds to a particular Neon EVM transaction, subject to an event limit of 128K bytes. If the transaction execution is in iterative mode, each Solana transaction within this process maintains a 128K byte limit for event logs.
 
