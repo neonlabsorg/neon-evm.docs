@@ -9,7 +9,7 @@ comments: na
 
 ## Introduction
 
-This page details about the smart contract code compatibility factors that determines whether the smart contracts are fully compatible with Neon EVM or not.
+This page details the smart contract code compatibility factors that determine whether the smart contracts are fully compatible with Neon EVM or not.
 
 ## Smart contract compatibility factors
 
