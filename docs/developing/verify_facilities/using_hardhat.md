@@ -1,5 +1,5 @@
 ---
-title: Verify with Hardhat
+title: Verify smart contracts with Hardhat
 proofedDate: na
 iterationBy: na
 includedInSite: true

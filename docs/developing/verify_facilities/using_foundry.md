@@ -1,5 +1,5 @@
 ---
-title: Verify with Foundry
+title: Verify smart contracts with Foundry
 proofedDate: na
 iterationBy: na
 includedInSite: true
