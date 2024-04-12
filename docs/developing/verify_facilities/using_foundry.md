@@ -69,3 +69,7 @@ forge verify-contract --chain-id $CHAIN_ID_DEVNET 0x93adb347065949a90a7f2e198f94
 ```
 
 :::
+
+:::info
+If you want to verify on NeonScan, then please follow this page which describes the steps **[to verify smart contracts manually on NeonScan](verify_manually.md)**
+:::
