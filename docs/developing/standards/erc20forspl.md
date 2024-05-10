@@ -1,5 +1,5 @@
 ---
-title: ERC20 For SPL
+title: ERC-20 For SPL
 proofedDate: 20240507
 iterationBy: na
 includedInSite: false
@@ -28,7 +28,7 @@ All the contracts can be found in the [official Github repository](https://githu
 
 ### ERC20ForSPLBackbone.sol
 
-This contract serves as a backbone for both ERC20ForSPL and ERC20ForSPLMintable smart contracts. ERC20ForSPLBackbone contains the core logic for the ERC20ForSPL and ERC20ForSPLMintable standards.
+This contract serves as a backbone for ERC20ForSPL smart contract. ERC20ForSPLBackbone contains the core logic for the ERC20ForSPL standard.
 
 This standard interacts with the following 2 predefined smart contracts on the Neon EVM chain:
 
@@ -165,6 +165,6 @@ This contract serves as a factory to deploy interface contracts of already deplo
 | :------------------------------------------------------------------------------ |
 | This private function sets the implementation contract address for this beacon. |
 
-| deploy(bytes32 tokenMint) -> address                                                                   |
-| :----------------------------------------------------------------------------------------------------- |
-| This external function deploys a new ERC20ForSPL's BeaconProxy instance and returns the proxy address. |
+| deploy(bytes32 tokenMint) -> address                                                                                                |
+| :---------------------------------------------------------------------------------------------------------------------------------- |
+| This external function deploys a new ERC20ForSPL's BeaconProxy instance and returns the ERC-20 interface address for the SPL Token. |

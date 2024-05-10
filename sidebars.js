@@ -60,7 +60,7 @@ const sidebars = {
     {
       type: 'category',
       label: 'Standards',
-      items: ['developing/standards/erc20forspl']
+      items: ['developing/standards/erc20forspl', 'developing/standards/erc20forspl_mintable']
     },
     {
       type: 'category',
