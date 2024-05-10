@@ -19,7 +19,10 @@ This standard allows Solana liquidity to be available to EVM bytecode contracts 
 | Mainnet  | 0x...                                            |
 
 :::info
-To be able to use an SPL token from a Solana account balance, it must be transferred to a Neon EVM account via [NeonPass](https://neonpass.live/).
+
+1. ERC-20 for SPL Mintable interface contracts also give access to mint the SPL Token by the token owner when deploying the SPL Token via this factory contract, in addition to getting access to the token data from Solana.
+2. To be able to use an SPL token from a Solana account balance, it must be transferred to a Neon EVM account via [NeonPass](https://neonpass.live/).
+
 :::
 
 ## Contracts
