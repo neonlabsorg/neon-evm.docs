@@ -171,3 +171,16 @@ This contract serves as a factory to deploy interface contracts of already deplo
 | deploy(bytes32 tokenMint) -> address                                                                                                |
 | :---------------------------------------------------------------------------------------------------------------------------------- |
 | This external function deploys a new ERC20ForSPL's BeaconProxy instance and returns the ERC-20 interface address for the SPL Token. |
+
+## Deployment of the contracts
+
+### Deploying ERC20ForSPL standard and the factory contract
+
+The contracts `ERC20ForSPLBackbone.sol`, `ERC20ForSPL.sol` and `ERC20ForSPLFactory.sol` are deployed using this [deploy script](https://github.com/neonlabsorg/neon-contracts/blob/main/ERC20ForSPL/scripts/deployERC20ForSPLFactory.js). The owner of these contracts is **Neon DAO** and only Neon DAO has the rights to change/update the code if needed. The ERC-20 token proxies that are deployed using the factory addresses (for Devnet and Mainnet) mentioned in this document are accepted to be included in the NeonPass.
+
+### Deploying an ERC-20 for SPL interface contract using the deployed factory contract
+
+To deploy an ERC-20 for SPL BeaconProxy instance, this [deploy script](https://github.com/neonlabsorg/neon-contracts/blob/main/ERC20ForSPL/scripts/deployERC20ForSPLThruFactory.js) can be used with the following changes -
+
+1. Change the variable `TOKEN_MINT` value to the SPL Token address for which you need to create an ERC-20 for SPL interface contract (SPL Token address must be converted to a hex representation).
+2. Add the ERC20ForSPLFactory address to `ERC20ForSPLFactoryAddress` variable.

@@ -80,3 +80,16 @@ This contract serves as a factory to deploy SPL Token on Solana together with in
 | deploy(string memory \_name, string memory \_symbol, string memory \_uri, uint8 \_decimals) -> bytes32, address                                                           |
 | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | This external function deploys a new ERC20ForSPLMintable's BeaconProxy instance and returns the SPL Token account address and the corresponding ERC-20 interface address. |
+
+## Deployment of the contracts
+
+### Deploying ERC20ForSPLMintable standard and the factory contract
+
+The contracts `ERC20ForSPLBackbone.sol`, `ERC20ForSPLMintable.sol` and `ERC20ForSPLMintableFactory.sol` are deployed using this [deploy script](https://github.com/neonlabsorg/neon-contracts/blob/main/ERC20ForSPL/scripts/deployERC20ForSPLMintableFactory.js). The owner of these contracts is **Neon DAO** and only only Neon DAO has the rights to change/update the code if needed. The ERC-20 mintable token proxies that are deployed using the factory addresses (for Devnet and Mainnet) mentioned in this document are accepted to be included in the NeonPass.
+
+### Deploying an ERC-20 for SPL Mintable interface contract using the deployed factory contract
+
+To deploy an ERC-20 for SPL Mintable BeaconProxy instance, this [deploy script](https://github.com/neonlabsorg/neon-contracts/blob/main/ERC20ForSPL/scripts/deployERC20ForSPLMintableThruFactory.js) can be used with the following changes -
+
+1. Add the ERC20ForSPLFactory address to `ERC20ForSPLFactoryAddress` variable.
+2. Add your own token specifications to the `ERC20ForSPLFactoryInstance.deploy()` function.
