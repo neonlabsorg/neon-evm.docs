@@ -112,9 +112,9 @@ This standard interacts with the following 2 predefined smart contracts on the N
 | :------------------------------------------------------------------------------------- |
 | This external function returns the boolean value after calling the `claimTo` function. |
 
-| claimTo(bytes32 from, address to, uint64 amount) -> bool                                                 |
-| :------------------------------------------------------------------------------------------------------- |
-| This public function returns the boolean value after initiating `transferWithSeed` instuction on Solana. |
+| claimTo(bytes32 from, address to, uint64 amount) -> bool                                                  |
+| :-------------------------------------------------------------------------------------------------------- |
+| This public function returns the boolean value after initiating `transferWithSeed` instruction on Solana. |
 
 | \_approve(address owner, address spender, uint256 amount)              |
 | :--------------------------------------------------------------------- |
