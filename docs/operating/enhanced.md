@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
 
 ## Who Should Use This Guide
 
-This guide provides instructions on how to run a self-managed instance of Neon Proxy that offers more flexibility, configurability, and control for its Operator. It is designed for operators who use or would like to use a Kubernetes cluster (ether on-premise or third-party provided e.g. AWS(EKS), Azure(AKS), GCP(GKE)) for hosting Neon Proxy installation.
+The guide provides instructions on how to run a self-managed instance of Neon Proxy that offers more flexibility, configurability, and control for its Operator. It is designed for operators who use or would like to use a Kubernetes cluster to host the Neon Proxy installation. This could be either on-premise or provided by a third party, such as AWS(EKS), Azure(AKS), or GCP(GKE).
 
 Please note that operating a self-managed Neon Proxy requires certain technical expertise and a solid understanding of network and security protocols. The operator is responsible for ensuring the security and reliability of the proxy and the Kubernetes cluster it runs on, and will be well-advised to invest time and resources into managing and maintaining them.
 
