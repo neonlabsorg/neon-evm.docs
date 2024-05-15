@@ -200,7 +200,7 @@ where
 * `POSTGRES_PORT` - specifies your database's TCP port. Default is `5432`
 * `POSTGRES_STORAGE_CLASS` - specifies the database's storage class.
     - Set value to`"host"` if you set up your database in your local cluster;
-    - You can check other available options for self-hosted and third-party provided Kubernetess clusters with:
+    - You can check other available options for self-hosted and third-party provided Kubernetes clusters with:
      ```bash
      kubectl get storageclasses.storage.k8s.io
      ```
