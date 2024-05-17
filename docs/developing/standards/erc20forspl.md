@@ -1,5 +1,5 @@
 ---
-title: ERC-20 For SPL
+title: ERC20ForSPL
 proofedDate: 20240507
 iterationBy: na
 includedInSite: false
@@ -7,24 +7,26 @@ approvedBy: na
 comments:
 ---
 
+<div class="erc20forspl-content">
+
 ## Introduction
 
-This page provides information on the ERC-20 for SPL interface contract, which grants access to Solana's native tokens, which are registered in the SPL token contract, via the ERC-20 standard interface.(https://eips.ethereum.org/EIPS/eip-20). It allows you to deploy the standard on Neon EVM for an already existing SPLToken on Solana.
+This page provides information on the ERC20ForSPL interface contract, which grants access to Solana's native tokens, which are registered in the SPL token contract, via the ERC-20 standard interface.(https://eips.ethereum.org/EIPS/eip-20). It allows you to deploy the standard on Neon EVM for an already existing SPLToken on Solana.
 
-This standard allows Solana liquidity to be available to EVM bytecode contracts (Solidity, Vyper, etc.), i.e. this ERC-20 for SPL interface allows Ethereum wallets such as MetaMask to transact with SPL tokens and can be transferred between Neon EVM and Solana externally owned accounts.
+This standard allows Solana liquidity to be available to EVM bytecode contracts (Solidity, Vyper, etc.), i.e. this ERC20ForSPL interface allows Ethereum wallets such as MetaMask to transact with SPL tokens and can be transferred between Neon EVM and Solana externally owned accounts.
 
-| Location | ERC-20 for SPL Factory Contract address |
+| Location | ERC20ForSPL Factory Contract address |
 | :------- | :-------------------------------------- |
 | Devnet   | 0x...                                   |
 | Mainnet  | 0x...                                   |
 
 :::info
 
-1. ERC-20 for SPL interface contracts can only access the SPL token data but can't give access to mint the SPL Token.
+1. ERC20ForSPL interface contracts can only access the SPL token data but can't give access to mint the SPL Token.
 2. To be able to use an SPL token from a Solana account balance, it must be transferred to a Neon EVM account via [NeonPass](https://neonpass.live/).
 
 :::
-
+<br/>
 ## Contracts
 
 All the contracts can be found in the [official Github repository](https://github.com/neonlabsorg/neon-contracts/tree/main/ERC20ForSPL/contracts).
@@ -132,8 +134,8 @@ This standard interacts with the following 2 predefined smart contracts on the N
 | :--------------------------------------------------------------------- |
 | This internal function transfers an amount of the SPL Token on Solana. |
 
+<br/>
 ### ERC20ForSPL.sol
-
 This contract serves as an interface contract of already deployed SPL Token on Solana. Through this interface Ethereum-like address on Neon EVM chain can apply changes on SPL Token account on Solana. This contract is used as a BeaconProxy implementation. The Beacon is defined and inherited from `ERC20ForSPLBackbone.sol` at storage slot 0.
 
 **Functions:**
@@ -142,6 +144,7 @@ This contract serves as an interface contract of already deployed SPL Token on S
 | :-------------------------------------------------------------------------------------------------------------- |
 | This public function is used by the OpenZeppelin's UUPS library that mimics the functionality of a constructor. |
 
+<br/>
 ### ERC20ForSPLFactory.sol
 
 This contract serves as a factory to deploy interface contracts of already deployed SPL Token on Solana. This contract is built with forked OpenZeppelin's UUPS standard and it is a Beacon contract.
@@ -172,15 +175,18 @@ This contract serves as a factory to deploy interface contracts of already deplo
 | :---------------------------------------------------------------------------------------------------------------------------------- |
 | This external function deploys a new ERC20ForSPL's BeaconProxy instance and returns the ERC-20 interface address for the SPL Token. |
 
+<br/><br/>
 ## Deployment of the contracts
-
+<br/>
 ### Deploying ERC20ForSPL standard and the factory contract
 
 The contracts `ERC20ForSPLBackbone.sol`, `ERC20ForSPL.sol` and `ERC20ForSPLFactory.sol` are deployed using this [deploy script](https://github.com/neonlabsorg/neon-contracts/blob/main/ERC20ForSPL/scripts/deployERC20ForSPLFactory.js). The owner of these contracts is **Neon DAO** and only Neon DAO has the rights to change/update the code if needed. The ERC-20 token proxies that are deployed using the factory addresses (for Devnet and Mainnet) mentioned in this document are accepted to be included in the NeonPass.
 
-### Deploying an ERC-20 for SPL interface contract using the deployed factory contract
+### Deploying an ERC20ForSPL interface contract using the deployed factory contract
 
-To deploy an ERC-20 for SPL BeaconProxy instance, this [deploy script](https://github.com/neonlabsorg/neon-contracts/blob/main/ERC20ForSPL/scripts/deployERC20ForSPLThruFactory.js) can be used with the following changes -
+To deploy an ERC20ForSPL BeaconProxy instance, this [deploy script](https://github.com/neonlabsorg/neon-contracts/blob/main/ERC20ForSPL/scripts/deployERC20ForSPLThruFactory.js) can be used with the following changes -
 
-1. Change the variable `TOKEN_MINT` value to the SPL Token address for which you need to create an ERC-20 for SPL interface contract (SPL Token address must be converted to a hex representation).
+1. Change the variable `TOKEN_MINT` value to the SPL Token address for which you need to create an ERC20ForSPL interface contract (SPL Token address must be converted to a hex representation).
 2. Add the ERC20ForSPLFactory address to `ERC20ForSPLFactoryAddress` variable.
+
+</div>
