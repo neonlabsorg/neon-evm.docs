@@ -16,9 +16,9 @@ This page provides information on the ERC20ForSPLMintable interface contract, wh
 This standard allows Solana liquidity to be available to EVM bytecode contracts (Solidity, Vyper, etc.), i.e. this ERC20ForSPLMintable interface allows Ethereum wallets such as MetaMask to transact with the newly deployed SPL tokens and can be transferred between Neon EVM and Solana externally owned accounts.
 
 | Location | ERC20ForSPLMintable Factory Contract address |
-| :------- | :----------------------------------------------- |
-| Devnet   | 0x...                                            |
-| Mainnet  | 0x...                                            |
+| :------- | :------------------------------------------- |
+| Devnet   | 0x30Ae1963DDf63e7406235dBcD557d9222FB010Cc   |
+| Mainnet  | 0x...                                        |
 
 :::info
 
@@ -27,6 +27,7 @@ This standard allows Solana liquidity to be available to EVM bytecode contracts 
 
 :::
 <br/>
+
 ## Contracts
 
 All the contracts can be found in the [official Github repository](https://github.com/neonlabsorg/neon-contracts/tree/main/ERC20ForSPL/contracts).
