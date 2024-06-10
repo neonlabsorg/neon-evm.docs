@@ -2,7 +2,6 @@
   "type": "object",
   "description": "POST request for parameters of the Neon EVM program deployed on Solana.",
   "required": [
-    "id",
     "method",
     "params",
     "jsonrpc"
