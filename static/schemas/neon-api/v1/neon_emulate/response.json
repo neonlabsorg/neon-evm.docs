@@ -59,12 +59,6 @@
           "isWritable": false,
           "isLegacy": false
        }
-      ],
-      "accounts": [
-        {
-          "account": "0x66f820a414680b5bcda5eeca5dea238543f42054",
-          "contract": "0x6f46cf5569aefa1acc1009290c8e043747172d89"
-        }
       ]
     }
   },
