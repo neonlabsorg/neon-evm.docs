@@ -119,3 +119,8 @@ img {
   height: 24px!important;
   vertical-align: middle;
 }
+
+.erc20forspl-content table, .erc20forspl-mintable-content table {
+    display: table !important;
+    width: 100% !important;
+}
