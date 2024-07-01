@@ -61,7 +61,7 @@ export function Proxy(props: { changeState: Dispatch<any>, theme: 'dark' | 'ligh
         </g>
         <text fill={textColor} fontFamily="Inter" fontSize="25" fontWeight="bold" letterSpacing="-0.514979px"><tspan x="1437.35" y="428.091">Neon Proxy </tspan><tspan x="1049" y="668.091">Neon operators</tspan></text>
         <text fill={textColor} fontFamily="Inter" fontSize="25" letterSpacing="-0.514979px"><tspan x="1049" y="398.091">The </tspan><tspan x="1238.91" y="398.091">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is used to pay the </tspan><tspan x="1587.76" y="398.091"> </tspan><tspan x="1049" y="428.091">required for transaction execution </tspan><tspan x="1049" y="458.091">is&#xa0;an&#xa0;essential tool for packaging a Neon transaction </tspan><tspan x="1049" y="488.091">into a Solana transaction. It&#xa0;improves the user </tspan><tspan x="1049" y="518.091">experience for operators in&#xa0;the Neon ecosystem, </tspan><tspan x="1049" y="548.091">and it allows Ethereum dApps to be ported to Neon </tspan><tspan x="1049" y="578.091">with virtually no&#xa0;code or configuration changes, </tspan><tspan x="1049" y="608.091">as&#xa0;all the&#xa0;&#x201c;translating&#x201d; is&#xa0;handled by the proxy.&#10;</tspan><tspan x="1049" y="638.091">&#10;</tspan><tspan x="1231.39" y="668.091"> run Neon Proxy servers, which </tspan><tspan x="1049" y="698.091">helps facilitate seamless execution of Ethereum-like </tspan><tspan x="1049" y="728.091">transactions on Solana. This allows Ethereum dApps </tspan><tspan x="1049" y="758.091">to be ported to Neon with no code change</tspan></text>
-        <a href="/docs/tokens/neon_token">
+        <a href="/tokens/neon_token">
           <text fill={linkColor} fontFamily="Inter" fontSize="25" letterSpacing="-0.514979px" textDecoration="underline"><tspan x="1099.33" y="398.091">NEON token</tspan></text>
           <g>
             <path d="M1252.6 382.8H1266.2V396.4" stroke={linkColor} strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round"/>
@@ -69,7 +69,7 @@ export function Proxy(props: { changeState: Dispatch<any>, theme: 'dark' | 'ligh
             <circle cx="1259" cy="390" r="15" stroke={linkColor} strokeWidth="2"/>
           </g>
         </a>
-        <a href="/docs/tokens/gas_fees">
+        <a href="/tokens/gas_fees">
           <text fill={linkColor} fontFamily="Inter" fontSize="25" letterSpacing="-0.514979px" textDecoration="underline"><tspan x="1491.85" y="398.091">gas fees</tspan></text>
           <g>
             <path d="M1602.6 382.8H1616.2V396.4" stroke={linkColor} strokeWidth="2" strokeMiterlimit="10" strokeLinecap="round"/>

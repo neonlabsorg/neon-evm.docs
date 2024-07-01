@@ -7,7 +7,7 @@ const config = {
   title: 'Neon Docs',
   tagline: 'Neon EVM is an open source project implementing the Ethereum virtual machine on Solana.',
   url: 'https://neonevm.org',
-  baseUrl: '/',
+  baseUrl: 'docs/',
   onBrokenLinks: 'throw',
   onBrokenAnchors: 'ignore',
   onBrokenMarkdownLinks: 'throw',
@@ -76,26 +76,26 @@ const config = {
           {
             label: 'Home',
             position: 'left',
-            to: '/docs/quick_start'
+            to: '/quick_start'
           },
           // { label: 'DAO',
           //   position: 'left',
-          //   to: '/docs/governance/overview'
+          //   to: '/governance/overview'
           // },
           {
             label: 'Develop',
             position: 'left',
-            to: '/docs/developing/get-started'
+            to: '/developing/get-started'
           },
           {
             label: 'Fees',
             position: 'left',
-            to: '/docs/tokens/gas_fees'
+            to: '/tokens/gas_fees'
           },
           {
             label: 'Operate',
             position: 'left',
-            to: '/docs/operating/operator-introduction'
+            to: '/operating/operator-introduction'
           }
         ]
       },
@@ -108,12 +108,12 @@ const config = {
           {
             title: 'Get Started',
             items: [
-              { label: '🏓 Quick Start', to: '/docs/quick_start' },
-              { label: '🧬 Neon EVM Overview', to: '/docs/about/why_neon' },
-              { label: '🔑 Set Up Wallet', to: '/docs/wallet/metamask_setup' },
-              { label: '💰 Tokens', to: '/docs/tokens/neon_token' },
-              { label: '🛰 Transfer Tokens', to: '/docs/token_transferring/neonpass_usage' },
-              { label: '💬 FAQ', to: '/docs/faq/neon-brief-faq' }
+              { label: '🏓 Quick Start', to: '/quick_start' },
+              { label: '🧬 Neon EVM Overview', to: '/about/why_neon' },
+              { label: '🔑 Set Up Wallet', to: '/wallet/metamask_setup' },
+              { label: '💰 Tokens', to: '/tokens/neon_token' },
+              { label: '🛰 Transfer Tokens', to: '/token_transferring/neonpass_usage' },
+              { label: '💬 FAQ', to: '/faq/neon-brief-faq' }
             ]
           },
           {
@@ -127,37 +127,37 @@ const config = {
           {
             title: 'Develop',
             items: [
-              { label: 'Connect to Neon RPC', to: '/docs/developing/connect_rpc' },
-              { label: 'Request Test Tokens', to: '/docs/developing/utilities/faucet' },
+              { label: 'Connect to Neon RPC', to: '/developing/connect_rpc' },
+              { label: 'Request Test Tokens', to: '/developing/utilities/faucet' },
               {
                 label: 'Configure Dev Tools',
-                to: '/docs/developing/deploy_facilities/configure_hardhat'
+                to: '/developing/deploy_facilities/configure_hardhat'
               },
               {
                 label: 'Use Tokens',
-                to: '/docs/developing/deploy_facilities/interacting_with_spl_tokens'
+                to: '/developing/deploy_facilities/interacting_with_spl_tokens'
               },
               {
                 label: 'Integrate',
-                to: '/docs/developing/integrate/oracles/integrating_chainlink'
+                to: '/developing/integrate/oracles/integrating_chainlink'
               },
-              { label: 'Tutorials', to: '/docs/developing/deploy_facilities/using_hardhat' }
+              { label: 'Tutorials', to: '/developing/deploy_facilities/using_hardhat' }
             ]
           },
           {
             title: 'Operate',
             items: [
-              { label: 'Operate a Neon Proxy', to: '/docs/operating/operator-introduction' },
-              { label: 'Run a Proxy Server', to: '/docs/operating/basic' }
+              { label: 'Operate a Neon Proxy', to: '/operating/operator-introduction' },
+              { label: 'Run a Proxy Server', to: '/operating/basic' }
             ]
           },
           {
             title: 'Govern',
             items: [
-              { label: 'Overview', to: '/docs/governance/overview' },
-              { label: 'Neon DAO Organization', to: '/docs/governance/neon_daos' },
-              { label: 'Voting Process', to: '/docs/governance/proposals' },
-              { label: 'Principles and Objectives', to: '/docs/governance/principles' }
+              { label: 'Overview', to: '/governance/overview' },
+              { label: 'Neon DAO Organization', to: '/governance/neon_daos' },
+              { label: 'Voting Process', to: '/governance/proposals' },
+              { label: 'Principles and Objectives', to: '/governance/principles' }
             ]
           }
         ],
@@ -178,6 +178,7 @@ const config = {
           trackingID: 'G-Y5QG48111W'
         },
         docs: {
+          routeBasePath: '/',
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/neonevm/neon-evm.docs/edit/main',
         },
@@ -193,7 +194,7 @@ const config = {
       '@docusaurus/plugin-client-redirects',
       {
         redirects: [
-          { from: '/docs', to: '/docs/quick_start' }
+          { from: '/docs', to: '/quick_start' }
         ]
       }
     ]
