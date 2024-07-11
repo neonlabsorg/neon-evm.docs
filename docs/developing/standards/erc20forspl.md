@@ -1,6 +1,6 @@
 ---
 title: ERC20ForSPL
-proofedDate: 20240507
+proofedDate: 20240611
 iterationBy: na
 includedInSite: false
 approvedBy: na
@@ -176,7 +176,7 @@ This contract serves as a factory to deploy interface contracts of already deplo
 | :---------------------------------------------------------------------------------------------------------------------------------- |
 | This external function deploys a new ERC20ForSPL's BeaconProxy instance and returns the ERC-20 interface address for the SPL Token. |
 
-<br/><br/>
+<br/>
 
 ## Deployment of the contracts
 
