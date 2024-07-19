@@ -69,7 +69,7 @@ In order to create and run these services:
 mkdir keys
 mv {PATH_TO_WHITELISTED_KEYS} keys/
 ```
-Put Solana private key to id.json.
+  Put Solana private key to id.json.
 
 2. Set the following environment variables
    - `EVM_LOADER`, i.e. the contract address for Neon EVM
