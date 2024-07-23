@@ -64,12 +64,8 @@ The Neon EVM address is registered inside `neonlabsorg/proxy`, so the Proxy know
 #### Create and run services with Docker Compose
 In order to create and run these services: 
 
-1. Create a "keys" folder and put your allowlisted key into it. Note that the file with the Operator key should be named `id.json`.
-```bash
-mkdir keys
-mv {PATH_TO_WHITELISTED_KEYS} keys/
-```
-  Put Solana private key to id.json.
+1. Create a file `id.json` for storing an Operator key.
+   Put Solana private key to the `id.json`.
 
 2. Set the following environment variables
    - `EVM_LOADER`, i.e. the contract address for Neon EVM
@@ -77,13 +73,15 @@ mv {PATH_TO_WHITELISTED_KEYS} keys/
      - For Mainnet, use: `NeonVMyRX5GbCrsAHnUwx1nYYoJAtskU1bWUo6JGNyG`
    - `SOLANA_URL`
      - Refer to the [RPC Endpoints table](#rpc-endpoints)
-   - `REVISION` - neon proxy revision
+   - `VERSION` - neon proxy revision
+   - `SOLANA_KEY_FOR_EVM_CONFIG` - operator key, should be a valid solana public key with SOLs on it
 
-For example,
+Example for devnet configuration:
 ```bash
-export EVM_LOADER=eeLSJgWzzxrqKv1UxtRVVH8FX3qCQWUs9QuAjJpETGU
-export SOLANA_URL=http://api.devnet.solana.com/
-export REVISION=latest
+EVM_LOADER=eeLSJgWzzxrqKv1UxtRVVH8FX3qCQWUs9QuAjJpETGU
+VERSION=v1.13.20
+SOLANA_URL=http://api.devnet.solana.com/
+SOLANA_KEY_FOR_EVM_CONFIG=<your solana public key>
 ```
 
 3. Download the `docker-compose` [file](https://github.com/neonlabsorg/neon-proxy.py/blob/b3bd1a298f3a437cb48379f348ed71268af382cc/docker-compose.yml). This file should be placed in the same folder with the `keys/` directory.
@@ -93,13 +91,12 @@ wget https://raw.githubusercontent.com/neonlabsorg/neon-proxy.py/b3bd1a298f3a437
 
 4. Start the local environment.
 ```bash   
-docker-compose -f docker-compose-remote-solana.yml up postgres dbcreation proxy indexer -d
-SOLANA_URL=[working solana url] SOLANA_KEY_FOR_EVM_CONFIG=[public key of id.json] docker-compose up -d
+docker-compose up -d
 ```
 
 If you want to destroy the local environment, run the following command:
 ```bash
-docker-compose -f docker-compose-remote-solana.yml down
+docker-compose down
 ```
 
 The console output should look like this:
