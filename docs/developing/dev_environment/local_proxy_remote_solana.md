@@ -94,17 +94,26 @@ wget https://raw.githubusercontent.com/neonlabsorg/neon-proxy.py/b3bd1a298f3a437
 docker-compose up -d
 ```
 
+5. Check the local environment.
+You can ensure that start is succesfull by service statuses:
+```console
+**dbcreation** - Exited
+**indexer** - Up
+**postgres**, **proxy** - Up (healthy)
+```
+If proxy works, the request
+```bash
+curl -X POST -H 'Content-Type: application/json' -d '{"jsonrpc":"2.0","method":"eth_blockNumber","id":1}' http://127.0.0.1:9090/solana
+```
+will return current block as in the example:
+```JSON
+{"jsonrpc":"2.0","id":1,"result":"0x12b23ae0"}
+```
+
+6. Destroy the local environment.
 If you want to destroy the local environment, run the following command:
 ```bash
 docker-compose down
-```
-
-The console output should look like this:
-```console
-Creating postgres ... done
-Creating dbcreation ... done
-Creating indexer ... done
-Creating proxy ... done
 ```
 
 ## Connect to a Solana cluster RPC endpoint
