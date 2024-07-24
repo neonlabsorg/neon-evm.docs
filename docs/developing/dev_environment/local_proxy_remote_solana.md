@@ -84,9 +84,19 @@ SOLANA_URL=http://api.devnet.solana.com/
 SOLANA_KEY_FOR_EVM_CONFIG=<your solana public key>
 ```
 
-3. Download the `docker-compose` [file](https://github.com/neonlabsorg/neon-proxy.py/blob/b3bd1a298f3a437cb48379f348ed71268af382cc/docker-compose.yml). This file should be placed in the same folder with the `keys/` directory.
+3. Download the files neede to run services:
 ```bash
+# docker-compose file
 wget https://raw.githubusercontent.com/neonlabsorg/neon-proxy.py/b3bd1a298f3a437cb48379f348ed71268af382cc/docker-compose.yml
+
+# directory to store the data in case you want to rerun indexer service
+mkdir indexer_db
+
+# db scheme
+mkdir db
+cd db
+wget https://raw.githubusercontent.com/neonlabsorg/neon-proxy.py/develop/db/scheme.sql
+cd ..
 ```
 
 4. Start the local environment.
