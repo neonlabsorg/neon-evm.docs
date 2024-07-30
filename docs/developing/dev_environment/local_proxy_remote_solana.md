@@ -87,7 +87,7 @@ SOLANA_KEY_FOR_EVM_CONFIG=<your solana public key>
 3. Download the files neede to run services:
 ```bash
 # docker-compose file
-wget  https://raw.githubusercontent.com/neonlabsorg/neon-proxy.py/develop/docker-compose/docker-compose-ro.yml
+wget https://github.com/neonlabsorg/neon-proxy.py/blob/develop/docker-compose/docker-compose-ro.yml
 
 # directory to store the data in case you want to rerun indexer service
 mkdir indexer_db
