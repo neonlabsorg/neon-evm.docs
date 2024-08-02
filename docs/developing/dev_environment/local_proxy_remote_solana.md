@@ -132,7 +132,7 @@ docker-compose down
 
 **RPC endpoints**
 
-To use a Solana RPC endpoint, you need to specify the variable `-e SOLANA_URL='http://<Solana node RPC endpoint>'` on the command line. For example, to use Devnet, add the flag `-e SOLANA_URL='https://api.devnet.solana.com'`.
+To use a Solana RPC endpoint, you need to specify the variable `-e SOLANA_URL='http://<Solana node RPC endpoint>'` on the command line.
 
 When a Proxy is deployed, it generates a wallet containing a key pair. If you don't need the new wallet and want to use the keys you already have, you need to specify the path to your wallet on the command line.
 
