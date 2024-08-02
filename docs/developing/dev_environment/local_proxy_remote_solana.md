@@ -83,8 +83,8 @@ export VERSION=v1.13.20
 export SOLANA_URL=<SOLANA_NODE>
 export SOLANA_KEY_FOR_EVM_CONFIG=<YOUR_SOLANA_PUBLIC_KEY>
 ```
-Please note that public Solana nodes have [rate limits](https://solana.com/docs/core/clusters) and they may not work with the local Neon Proxy instance. 
-If you want to host the local proxy on your end you need a Solana node with no rate limits. You can set up your own node or just request one from a provider like P2P, Everstake or QuickNode.
+Please note that public Solana nodes have [rate limits](https://solana.com/docs/core/clusters) and they may not work with the local Neon Proxy. 
+If you want to host the local instancewwaaaaaa on your end you need a Solana node with no rate limits. You can set up your own node or just request one from a provider like P2P, Everstake or QuickNode.
 
 3. Download the files neede to run services:
 ```bash
@@ -109,9 +109,9 @@ docker-compose -f docker-compose-ro.yml up -d
 5. Check the local environment.
 You can ensure that start is succesfull by service statuses:
 ```console
-**dbcreation** - Exited
-**indexer** - Up
-**postgres**, **proxy** - Up (healthy)
+dbcreation - Exited
+indexer - Up
+postgres, proxy - Up (healthy)
 ```
 If proxy works, the request
 ```bash
@@ -130,7 +130,8 @@ docker-compose down
 
 ## Connect to a Solana cluster RPC endpoint
 
-**Command Line Options**
+**RPC endpoints**
+
 A Proxy connects to a public [Solana cluster RPC endpoint](https://docs.solana.com/cluster/rpc-endpoints) depending on the `SOLANA_URL` value set. The following table shows the *endpoint* value that's set automatically based on the value of the `CONFIG` flag.
 
 To use a different endpoint, you need to specify the variable `-e SOLANA_URL='http://<Solana node RPC endpoint>'` on the command line. For example, to use Devnet, add the flag `-e SOLANA_URL='https://api.devnet.solana.com'`.
