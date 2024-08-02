@@ -78,16 +78,18 @@ In order to create and run these services:
 
 Example for devnet configuration:
 ```bash
-EVM_LOADER=eeLSJgWzzxrqKv1UxtRVVH8FX3qCQWUs9QuAjJpETGU
-VERSION=v1.13.20
-SOLANA_URL=http://api.devnet.solana.com/
-SOLANA_KEY_FOR_EVM_CONFIG=<your solana public key>
+export EVM_LOADER=eeLSJgWzzxrqKv1UxtRVVH8FX3qCQWUs9QuAjJpETGU
+export VERSION=v1.13.20
+export SOLANA_URL=<SOLANA_NODE>
+export SOLANA_KEY_FOR_EVM_CONFIG=<YOUR_SOLANA_PUBLIC_KEY>
 ```
+Please note that public Solana nodes have [rate limits](https://solana.com/docs/core/clusters) and they may not work with the local Neon Proxy instance. 
+If you want to host the local proxy on your end you need a Solana node with no rate limits. You can set up your own node or just request one from a provider like P2P, Everstake or QuickNode.
 
 3. Download the files neede to run services:
 ```bash
 # docker-compose file
-wget https://github.com/neonlabsorg/neon-proxy.py/blob/develop/docker-compose/docker-compose-ro.yml
+wget https://raw.githubusercontent.com/neonlabsorg/neon-proxy.py/develop/docker-compose/docker-compose-ro.yml
 
 # directory to store the data in case you want to rerun indexer service
 mkdir indexer_db
@@ -101,7 +103,7 @@ cd ..
 
 4. Start the local environment.
 ```bash   
-docker-compose up -d
+docker-compose -f docker-compose-ro.yml up -d
 ```
 
 5. Check the local environment.
@@ -128,14 +130,8 @@ docker-compose down
 
 ## Connect to a Solana cluster RPC endpoint
 
+**Command Line Options**
 A Proxy connects to a public [Solana cluster RPC endpoint](https://docs.solana.com/cluster/rpc-endpoints) depending on the `SOLANA_URL` value set. The following table shows the *endpoint* value that's set automatically based on the value of the `CONFIG` flag.
-
-### RPC endpoints
-CONFIG | RPC Endpoint
-:-|:-
-Devnet | `https://api.devnet.solana.com`
-Testnet | `https://api.testnet.solana.com`
-Mainnet | `https://api.mainnet-beta.solana.com`
 
 To use a different endpoint, you need to specify the variable `-e SOLANA_URL='http://<Solana node RPC endpoint>'` on the command line. For example, to use Devnet, add the flag `-e SOLANA_URL='https://api.devnet.solana.com'`.
 
