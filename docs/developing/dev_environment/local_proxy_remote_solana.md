@@ -84,7 +84,7 @@ export SOLANA_URL=<SOLANA_NODE>
 export SOLANA_KEY_FOR_EVM_CONFIG=<YOUR_SOLANA_PUBLIC_KEY>
 ```
 Please note that public Solana nodes have [rate limits](https://solana.com/docs/core/clusters) and they may not work with the local Neon Proxy. 
-If you want to host the local instancewwaaaaaa on your end you need a Solana node with no rate limits. You can set up your own node or just request one from a provider like P2P, Everstake or QuickNode.
+If you want to host the local instance on your end you need a Solana node with no rate limits. You can set up your own node or just request one from a provider like P2P, Everstake or QuickNode.
 
 3. Download the files neede to run services:
 ```bash
@@ -132,9 +132,7 @@ docker-compose down
 
 **RPC endpoints**
 
-A Proxy connects to a public [Solana cluster RPC endpoint](https://docs.solana.com/cluster/rpc-endpoints) depending on the `SOLANA_URL` value set. The following table shows the *endpoint* value that's set automatically based on the value of the `CONFIG` flag.
-
-To use a different endpoint, you need to specify the variable `-e SOLANA_URL='http://<Solana node RPC endpoint>'` on the command line. For example, to use Devnet, add the flag `-e SOLANA_URL='https://api.devnet.solana.com'`.
+To use a Solana RPC endpoint, you need to specify the variable `-e SOLANA_URL='http://<Solana node RPC endpoint>'` on the command line. For example, to use Devnet, add the flag `-e SOLANA_URL='https://api.devnet.solana.com'`.
 
 When a Proxy is deployed, it generates a wallet containing a key pair. If you don't need the new wallet and want to use the keys you already have, you need to specify the path to your wallet on the command line.
 
