@@ -18,11 +18,7 @@ The Safe Account functions as a proxy contract, which means it forwards requests
 The term "contract state" refers to the variables (or values) associated with a specific contract. Functions and contract code are usually stored and executed as bytecode within the Neon EVM, while variables are managed separately. These variables are the values that functions change when they run. For the Safe, the singleton contract provides the functions that adjust the state variables in the proxy. This singleton contract is also called the master copy of the Safe.
 
 
-## Prerequisites
-
-- NodeJS 16.x or newer
-
-## How to integrate Web3Auth SDK
+## How to create a Safe account on Neon EVM Mainnet
 
 ### Step 1: Connect your wallet
 
