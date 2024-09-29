@@ -17,7 +17,7 @@ Prerequisite: Install Docker Desktop (https://www.docker.com/products/docker-des
 
 Once Docker is installed on your system, create Safe account using the Safe guide
 
-## How to create a new Safe CLI
+## Interact with a Safe wallet using CLI
 
 ### Step 1: Create 2 or more wallets
 
@@ -30,26 +30,8 @@ Once Docker is installed on your system, create Safe account using the Safe guid
 </div>
 
 ### Step 2: Installation
-2.1 Run
 
-docker run -it safeglobal/safe-cli safe-creator
-
-You can also run the following command to run the Safe CLI with an existing Safe:
-
-docker run -it safeglobal/safe-cli safe-cli <checksummed_safe_address> <ethereum_node_url>
-
-Example:
-
-docker run -it safeglobal/safe-cli safe-creator https://neon-mainnet.everstake.one/ 0000000000000000000000000000000000000000000000000000000000000000
-
-
-<div className='neon-img-width-600' style={{textAlign: 'center'}}>
-
-![](img/cli2.png)
-
-</div>
-
-2.2 Run
+Run
 
 docker run -it safeglobal/safe-cli safe-cli 0x0000000000000000000000000000000000000000 https://neon-mainnet.everstake.one/
 
