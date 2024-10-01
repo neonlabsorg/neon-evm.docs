@@ -32,8 +32,9 @@ Once Docker is installed on your system, create Safe account using the Safe guid
 ### Step 2: Installation
 
 Run
-
+```
 docker run -it safeglobal/safe-cli safe-cli 0x0000000000000000000000000000000000000000 https://neon-mainnet.everstake.one/
+```
 
 <div className='neon-img-width-600' style={{textAlign: 'center'}}>
 
@@ -44,10 +45,10 @@ docker run -it safeglobal/safe-cli safe-cli 0x0000000000000000000000000000000000
 ### Step 3: How to remove an owner
 
 3.1 Run
-
 For 2 wallets:
-
+```
 load_cli_owners <private-key1> <private-key2>
+```
 
 If you have more wallets then add more private keys
 
@@ -58,8 +59,9 @@ If you have more wallets then add more private keys
 </div>
 
 3.2 Run
-
+```
 show_cli_owners
+```
 
 <div className='neon-img-width-600' style={{textAlign: 'center'}}>
 
@@ -68,11 +70,14 @@ show_cli_owners
 </div>
 
 3.3 Run
-
+```
 remove_owner <address> --threshold 3
+```
 
 Example for 2 wallets:
+```
 remove_owner 0x0x0000000000000000000000000000000000000000 --threshold 2
+```
 
 If you have more than two wallets then change the number of --threshold
 
