@@ -17,6 +17,8 @@ What is Safe?
 The Safe Account functions as a proxy contract, which means it forwards requests to a singleton contract. This singleton contract holds all the essential logic required for the Safe to operate. Proxy contracts are advantageous because they are typically more cost-effective to deploy and manage on public blockchains and they allow for easier upgrades. The primary purpose of the Safe proxy contract is to oversee and maintain the Safe’s state.
 The term "contract state" refers to the variables (or values) associated with a specific contract. Functions and contract code are usually stored and executed as bytecode within the Neon EVM, while variables are managed separately. These variables are the values that functions change when they run. For the Safe, the singleton contract provides the functions that adjust the state variables in the proxy. This singleton contract is also called the master copy of the Safe.
 
+Purpose:
+The primary purpose of Safe Neon EVM is to facilitate the secure storage, management, and multi-signature capabilities for digital assets. By leveraging the features of the Neon EVM, it allows users to utilize Ethereum-compatible tools like Solidity and Vyper while benefiting from Solana’s low transaction fees, high speeds, and parallel processing capabilities.
 
 ## How to create a Safe account on Neon EVM Mainnet
 
@@ -86,22 +88,3 @@ Accept the transaction in your initial wallet
 ![](img/safe8.png)
 
 </div>
-
-1.9 Welcome page
-Here you can see the dashboard with the
-- Total asset information
-- Pending transactions
-- Safe Apps
-- Connect & Transact information
-
-On the left part there are sections:
-1. Home
-2. Assets
-3. Transactions
-4. Address book
-5. Apps
-6. Settings
-
-<div className='neon-img-width-600' style={{textAlign: 'center'}}>
-
-![](img/safe9.png)

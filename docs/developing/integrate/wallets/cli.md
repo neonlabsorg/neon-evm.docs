@@ -17,6 +17,11 @@ Prerequisite: Install Docker Desktop (https://www.docker.com/products/docker-des
 
 Once Docker is installed on your system, create Safe account using the Safe guide
 
+Purpose:
+
+The primary purpose of the Neon CLI (Command Line Interface) for Neon EVM is to allow developers to manage, deploy, and operate Ethereum-compatible dApps on the Solana blockchain directly from the command line. This interface simplifies development tasks by enabling users to handle various functions, such as deploying smart contracts, configuring projects, managing databases, and setting up multi-signature accounts.
+
+
 ## Interact with a Safe wallet using CLI
 
 ### Step 1: Create 2 or more wallets
