@@ -5,6 +5,7 @@ iterationBy: na
 includedInSite: true
 approvedBy: na
 comment: TODO -- update to tell user Step 4 Connect MM to Proxy is binding a MM WalletID to a Neon Account ID -- this allows signing with a Neon Account
+draft: true
 ---
 
 ## TL;DR
