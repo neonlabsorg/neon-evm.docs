@@ -8,6 +8,8 @@ comment: TODO -- update to tell user Step 4 Connect MM to Proxy is binding a MM 
 draft: true
 ---
 
+test redirection
+
 ## TL;DR
 
 RPC endpoints are available on [Chainlist](https://chainlist.org/?chain=245022926&testnets=true&search=Neon+EVM).
