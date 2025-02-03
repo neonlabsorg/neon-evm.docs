@@ -198,7 +198,7 @@ const config = {
           from: [
             '/docs/non-existing-page',
             '/docs/other-non-existing-page',
-            '/docs/developing/integrate/oracles/integrating_api3' // page with `draft: true` title,
+            '/docs/developing/integrate/oracles/integrating_api3', // page with `draft: true` title
             '/docs/wallet/metamask_setup.md'
           ],
           to: '/docs/quick_start'
