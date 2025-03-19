@@ -1,6 +1,6 @@
 ---
 title: SDK Solana Native
-proofedDate: 20241312
+proofedDate: 20241903
 iterationBy: na
 includedInSite: false
 approvedBy: na
@@ -188,4 +188,3 @@ For further exploration and practical demonstration, check out the following res
 •	Swap UI Demo: A live demonstration of the swap UI is available at Neon Solana Signature Demo (https://neon-solana-signature-demo.pages.dev/)
 
 •	GitHub Repository: The source code for the Solana signature demo can be found on GitHub (https://github.com/neonlabsorg/neon-solana-signature-demo)
-
