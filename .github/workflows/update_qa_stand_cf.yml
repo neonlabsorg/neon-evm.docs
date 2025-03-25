@@ -1,6 +1,7 @@
 name: Update QA Stand in CLoudFlare Pages
 on:
   workflow_dispatch:
+  push:
 
 jobs:
   deploy:
