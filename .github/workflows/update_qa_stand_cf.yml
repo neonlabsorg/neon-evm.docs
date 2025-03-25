@@ -44,7 +44,6 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           command: |
-#            pages project list
             pages deploy ./build --project-name="neon-evm-docs-test"
 
         # with:
