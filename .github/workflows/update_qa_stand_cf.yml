@@ -40,11 +40,17 @@ jobs:
       #     AWS_REGION: ${{secrets.QA_AWS_REGION}}
       #     SOURCE_DIR: "build"
       - name: Publish to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: "6aa89f18f67a9754ebd563ed320efb8b"
-          projectName: "neon-evm-docs-test"
-          directory: "build"
-          # Optional: Enable this if you want to have GitHub Deployments triggered
-          gitHubToken: ${{ secrets.GHTOKEN }}
+          command: |
+            pages project list
+            pages deploy ./build --project-name=neon-evm-docs-test
+
+        # with:
+        #   apiToken: 
+        #   accountId: "6aa89f18f67a9754ebd563ed320efb8b"
+        #   projectName: "neon-evm-docs-test"
+        #   directory: "build"
+        #   # Optional: Enable this if you want to have GitHub Deployments triggered
+        #   gitHubToken: ${{ secrets.GHTOKEN }}
