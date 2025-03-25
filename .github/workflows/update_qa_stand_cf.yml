@@ -1,0 +1,49 @@
+name: Update QA Stand in CLoudFlare Pages
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ["self-hosted", "k8s-prod"]
+    strategy:
+      matrix:
+        node-version: [18]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use Node ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Setup yarn
+        run: npm install -g yarn
+      - name: Install modules
+        run: |
+          yarn install
+      - name: Check external links
+        run: |
+          find ./README.md ./docs/ -regex ".*.[md|mdx]" -print0 | xargs -0 -n1 \
+          ./node_modules/markdown-link-check/markdown-link-check --config linkcheck.config.json -q
+      - name: Build
+        run: |
+          yarn clear
+          yarn build
+      # - name: Deploy to s3
+      #   uses: jakejarvis/s3-sync-action@master
+      #   with:
+      #     args: --acl public-read --delete
+      #   env:
+      #     AWS_S3_BUCKET: ${{secrets.QA_AWS_S3_BUCKET}}
+      #     AWS_ACCESS_KEY_ID: ${{secrets.QA_AWS_ACCESS_KEY_ID}}
+      #     AWS_SECRET_ACCESS_KEY: ${{secrets.QA_AWS_SECRET_ACCESS_KEY}}
+      #     AWS_REGION: ${{secrets.QA_AWS_REGION}}
+      #     SOURCE_DIR: "build"
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: "6aa89f18f67a9754ebd563ed320efb8b"
+          projectName: "neon-evm-docs-test"
+          directory: "build"
+          # Optional: Enable this if you want to have GitHub Deployments triggered
+          gitHubToken: ${{ secrets.GHTOKEN }}
