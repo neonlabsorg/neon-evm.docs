@@ -42,7 +42,7 @@ jobs:
       - name: Publish to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          apiToken: ${{ secrets.TEST_CLOUDFLARE_API_TOKEN }}
           command: |
             pages deploy ./build --project-name="neon-evm-docs-test"
 
