@@ -1,4 +1,4 @@
-name: Update QA Stand in CLoudFlare Pages
+name: Update Prod in CLoudFlare Pages
 on:
   workflow_dispatch:
   push:
@@ -46,4 +46,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_PAGES_TOKEN }}
           command: |
-            pages deploy ./build --project-name="neon-evm-docs-test"
+            pages deploy ./build --project-name="neon-evm-docs-prod"
