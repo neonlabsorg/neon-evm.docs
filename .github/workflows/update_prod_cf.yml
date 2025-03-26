@@ -1,7 +1,6 @@
 name: Update Prod in CLoudFlare Pages
 on:
   workflow_dispatch:
-  push:
 
 jobs:
   deploy:
