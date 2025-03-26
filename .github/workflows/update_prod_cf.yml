@@ -46,4 +46,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CF_PAGES_TOKEN }}
           command: |
-            pages deploy ./build --project-name="neon-evm-docs-prod"
+            pages deploy ./build --project-name="${{ vars.CF_PAGES_PROJECT_PROD }}"
