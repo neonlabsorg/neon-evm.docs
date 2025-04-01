@@ -36,8 +36,8 @@ jobs:
 
       - name: Add whitepaper to docs build
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.CF_AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.CF_AWS_SECRET_ACCESS_KEY }}
         run: aws s3 cp s3://neonevm-website/Solana_Native.pdf ./build/Solana_Native.pdf --endpoint-url https://6aa89f18f67a9754ebd563ed320efb8b.r2.cloudflarestorage.com
 
       - name: Publish to Cloudflare Pages
