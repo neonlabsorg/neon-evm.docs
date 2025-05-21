@@ -27,8 +27,13 @@ const sidebars = {
     {
       type: 'category',
       label: '🛰 Transfer Tokens',
-      items: ['token_transferring/neonpass_usage', 'token_transferring/neon_transfer']
+      items: ['about/Memecoin_Launchpad_Raydium_Integration', 'about/POC_Aave_V3_flash_loan_with_composability_requests_to_Solana']
     },
+    {
+      type: 'category',
+      label: '🎬 Demo',
+      items: ['token_transferring/neonpass_usage', 'token_transferring/neon_transfer']
+    },  
     { type: 'doc', label: 'Neon Proxy API', id: 'api/neon-api' },
     {
       type: 'category',
