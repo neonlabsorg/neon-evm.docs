@@ -26,6 +26,9 @@
 
   --ifm-menu-link-padding-horizontal: 20px;
   --ifm-menu-link-padding-vertical: 8px;
+
+  --quick-start-card-background: #F2F4F8;
+  --quick-start-card-description: #61676F;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */

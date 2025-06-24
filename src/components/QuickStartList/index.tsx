@@ -1,45 +1,50 @@
 import React, { useState } from 'react';
-import linkList from '@site/static/data/link-list.json';
+import cardsList from '@site/static/data/cards-list.json';
 import Link from '@docusaurus/Link';
 import './styles.css';
 
-export interface QuickStartData {
+export interface QuickStartCardLink {
   id: number;
-  icon: string;
   title: string;
-  description: string;
   url?: string;
 }
 
-export interface QuickStartListData {
+export interface QuickStartCardData {
   id: number;
   title: string;
-  items: QuickStartData[];
+  description?: string;
+  links: QuickStartCardLink[];
 }
 
-export function QuickStartItem({ data }: { data: QuickStartData }) {
+export function QuickStartItem({ data }: { data: QuickStartCardLink }) {
   return <>
-    <Link className={'quick-start-item'} to={data.url}>
-      <div className={'quick-start-icon'}>
-        <img src={data.icon} alt='' />
-      </div>
+    <div>
       <div className={'quick-start-content'}>
         <div className={'quick-start-title'}>{data.title}</div>
-        <span className={'quick-start-description'}>{data.description}</span>
       </div>
-    </Link>
+    </div>
   </>;
 }
 
 export function QuickStartList<FC>() {
-  const [list] = useState<QuickStartListData[]>(linkList);
+  const [list] = useState<QuickStartCardData[]>(cardsList);
 
-  return <>
-    <div className={'list-wrapper'}>
-      {list.map(i => <div className={'list-wrapper_item'} key={i.id}>
-        <h3>{i.title}</h3>
-        {i.items.map((d, i) => <QuickStartItem data={d} key={i} />)}
-      </div>)}
+  return (
+    <div>
+      <div className='cards-wrapper'>
+        {list.map((item) => (
+          <div className='card-item' key={item.id}>
+            <h3 className='card-item__title'>{ item.title }</h3>
+            <p className='card-item__description'>{ item.description }</p>
+            { item.links.map((link) => (
+              <Link className='card-item__link' to={link.url} key={link.id}>
+                { link.title }
+              </Link>
+            ))}
+          </div>
+        ))}
+      </div>
+      <div className='action-cards-wrapper'></div>
     </div>
-  </>;
+  )
 }

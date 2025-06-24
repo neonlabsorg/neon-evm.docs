@@ -1,0 +1,54 @@
+[
+    {
+      "id": 0,
+      "title": "Connect Solana Wallets to your EVM dApp",
+      "description": "Enable your dApp frontend to connect to Solana Wallets.",
+      "links": [
+        {
+          "id": 0,
+          "title": "Explore Wallet SDK",
+          "url": "#"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "title": "Unlock Solana Liquidity in EVM",
+      "description": "Access Solana liquidity from your smart contract.",
+      "links": [
+        {
+          "id": 0,
+          "title": "Enable liquidity access",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Bring Solana Assets On-Chain",
+      "description": "Let Solana users bring their assets.",
+      "links": [
+        {
+          "id": 0,
+          "title": "Enable Solana Asset Transfers",
+          "url": ""
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Call any Solana Program from Neon EVM",
+      "links": [
+        {
+          "id": 0,
+          "title": "Learn about Composability",
+          "url": ""
+        },
+        {
+          "id": 1,
+          "title": "Explore onchain libraries",
+          "url": ""
+        }
+      ]
+    }
+  ]
