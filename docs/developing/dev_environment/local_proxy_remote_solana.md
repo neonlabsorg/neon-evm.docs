@@ -1,6 +1,6 @@
 ---
 title: "Local Proxy to Remote Solana"
-proofedDate: 20230828
+proofedDate: 20250707
 iterationBy: na
 includedInSite: true
 approvedBy: na
@@ -11,15 +11,10 @@ comment:
 The [Proxy local testing tutorial](/docs/operating/basic) describes how to perform testing with a local Proxy to a local Solana node. This option can be useful for developers who want to debug their Solidity contracts by hosting both Proxy and Solana nodes locally. This page provides a tutorial that demonstrates how to transact from a local Proxy to a public, remote Solana.
 :::
 
+## **Network configuration**
 
-## Prerequisites
-- [Docker](https://docs.docker.com/get-docker/); `docker-compose` v1.29 is recommended.
-- Operator keys. Test [public keys are available](https://github.com/neonlabsorg/proxy-model.py/tree/develop/proxy/operator-keypairs).
-
-
-## Network configuration
-  * The target Solana cluster is accessed via the locally-hosted Proxy.
-  * Solana [Testnet](https://docs.solana.com/clusters#testnet)/[Devnet](https://docs.solana.com/clusters#devnet)/[Mainnet](https://docs.solana.com/clusters#mainnet-beta) is used, and the Proxy interacts with it through Neon EVM.
+* The target Solana cluster is accessed via the locally-hosted Proxy.  
+* Solana Testnet/Devnet/Mainnet is used, and the Proxy interacts with it through Neon EVM.
 
 ## Set up a local Proxy
 First, set up and host a Proxy locally as per the following steps. After executing these commands, the Proxy is available at `http://localhost:9090/solana`. This address and port are set by default.
@@ -43,15 +38,17 @@ sudo systemctl start docker
 ```
 :::
 
-### Step 2: Run the Database, Indexer, and Proxy services
+### **Step 2: Run the Database, Indexer, and Proxy services**
+
 In this step, you will create the services necessary for the function of the Proxy (including Database and Indexer services), as well as the Proxy service itself. These services, whose functions follow, are controlled by a docker-compose.yml file.
 
-#### Database Services
-This container aims to handle the database that stores all the relevant Ethereum processing metadata linked to each other: **`transactions`**, **`blocks`**, **`receipts`**, **`accounts`**, etc. This data is consumed by the **Indexer** service.
+#### **Database Services**
+
+This container aims to handle the database that stores all the relevant Ethereum processing metadata linked to each other: transactions, blocks, receipts, accounts, etc. This data is consumed by the Indexer service.
 
 Currently, Neon EVM proxies are hard coded to work with PostgreSQL. To connect the Proxy to a database, you need to start a PostgreSQL container. The default settings are hard coded in the following docker-compose.yml file. If you want to use your Proxy with other settings, you need to register as an Operator so that Neon EVM can recognize your keys.
 
-> Only authorized Operators can change the settings of these parameters. Learn more about [operating a Neon Proxy](/docs/operating/operator-introduction.md)
+Only authorized Operators can change the settings of these parameters. Learn more about operating a Neon Proxy
 
 #### Indexer service
 The Indexer service indexes all the relevant Ethereum processing metadata consisting of **`signatures`**, **`transactions`**, **`blocks`**, **`receipts`**, **`accounts`**, etc. It gathers all this data from the Solana blockchain, filtering them by the EVM contract address. It enables us to provide our users with the Ethereum API.
@@ -68,36 +65,42 @@ In order to create and run these services:
    Put Solana private key to the `id.json`.
 
 2. Set the following environment variables
-   - `EVM_LOADER`, i.e. the contract address for Neon EVM
-     - For Devnet/Testnet, use: `eeLSJgWzzxrqKv1UxtRVVH8FX3qCQWUs9QuAjJpETGU`
-     - For Mainnet, use: `NeonVMyRX5GbCrsAHnUwx1nYYoJAtskU1bWUo6JGNyG`
-   - `SOLANA_URL`
-     - Refer to the [RPC Endpoints table](#rpc-endpoints)
-   - `VERSION` - neon proxy revision
-   - `SOLANA_KEY_FOR_EVM_CONFIG` - operator key, should be a valid solana public key with SOLs on it
+   * DOCKERHUB\_ORG\_NAME=neonlabsorg — specifies the Docker Hub organization name.  
+   * EVM\_LOADER, i.e. the contract address for Neon EVM  
+     * For Devnet/Testnet, use: eeLSJgWzzxrqKv1UxtRVVH8FX3qCQWUs9QuAjJpETGU  
+     * For Mainnet, use: NeonVMyRX5GbCrsAHnUwx1nYYoJAtskU1bWUo6JGNyG  
+   * SOLANA\_URL — the RPC endpoint for the Solana cluster (e.g., [api](https://api.devnet.solana.com)).  
+   * SOLANA\_KEY\_FOR\_EVM\_CONFIG — operator key, should be a valid Solana public key with SOLs on it.  
+   * VERSION — the latest Neon Proxy version (check the [official GitHub repository](https://github.com/neonlabsorg/neon-proxy.py) for the most recent version).
 
 Example for devnet configuration:
 ```bash
+export DOCKERHUB_ORG_NAME=neonlabsorg
+
 export EVM_LOADER=eeLSJgWzzxrqKv1UxtRVVH8FX3qCQWUs9QuAjJpETGU
-export VERSION=v1.13.20
-export SOLANA_URL=<SOLANA_NODE>
+
+export SOLANA_URL=https://api.devnet.solana.com
+
 export SOLANA_KEY_FOR_EVM_CONFIG=<YOUR_SOLANA_PUBLIC_KEY>
+
+export VERSION=<LATEST_VERSION_FROM_GITHUB>
 ```
-Please note that public Solana nodes have [rate limits](https://solana.com/docs/core/clusters) and they may not work with the local Neon Proxy. 
-If you want to host the local instance on your end you need a Solana node with no rate limits. You can set up your own node or just request one from a provider like P2P, Everstake or QuickNode.
+**Note**: Public Solana nodes (e.g., [nodes](https://api.devnet.solana.com) have rate limits and may not work reliably with the local Neon Proxy. For a stable setup, consider hosting your own Solana node or requesting one from providers like P2P, Everstake, or QuickNode.
 
 3. Download the files needed to run services:
 ```bash
-# docker-compose file
-wget https://raw.githubusercontent.com/neonlabsorg/neon-proxy.py/develop/docker-compose/docker-compose-ro.yml
-
 # directory to store the data in case you want to rerun indexer service
+
 mkdir indexer_db
 
 # db scheme
+
 mkdir db
+
 cd db
+
 wget https://raw.githubusercontent.com/neonlabsorg/neon-proxy.py/develop/db/scheme.sql
+
 cd ..
 ```
 
@@ -128,7 +131,7 @@ If you want to destroy the local environment, run the following command:
 docker-compose down
 ```
 
-## Connect to a Solana cluster RPC endpoint
+## **Connect to a Solana cluster RPC endpoint**
 
 **RPC endpoints**
 
