@@ -15,7 +15,9 @@ Neon EVM supports the majority of the [Ethereum OpCodes](https://ethereum.org/en
 |41|COINBASE|always returns zero|
 |44|PREVRANDAO (FKA DIFFICULTY)|always returns zero|
 |45|GASLIMIT|always returns U256::MAX|
+|48|BASEFEE|not supported; always returns the maximum value of a 64-bit unsigned integer (uint64_max)|
 |5A|GAS|returns the gas limit in the transaction instead of remaining gas|
+|FF|SELFDESTRUCT|in Neon EVM SELFDESTRUCT is entirely non-functional, even when called during the contract deployment transaction|
 
 
 
